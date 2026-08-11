@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ArchInspire — Ruyi Yang</title>
-<meta name="description" content="AI copilot for architectural concept design via design-by-analogy (GPT-4V annotation, custom generative models)">
+<meta name="description" content="AI copilot for architectural concept design via design-by-analogy (vision-language annotation, custom generative models)">
 <style>
   :root{
     --bg:#fcfcfc;
@@ -92,7 +92,7 @@
 
   /* ---------- case study (imported from ruyiyang.com) ---------- */
   .study{margin-top:56px;border-top:1px solid var(--line);padding-top:52px}
-  .study .st-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);margin-bottom:34px}
+  .study .st-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);margin:0 0 34px;max-width:none}
   .srow{display:grid;gap:26px;align-items:center;margin:0 0 42px}
   .srow.cols-1{grid-template-columns:1fr}
   .srow.cols-2{grid-template-columns:1fr 1fr}
@@ -110,6 +110,9 @@
   .study .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   .study .doc{display:inline-block;font-size:13px;border:1px solid var(--line);border-radius:100px;padding:9px 18px;margin:8px 0 20px}
   .study .doc:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  /* long-form content reads left-aligned; hero stays centered */
+  .meta{text-align:left}
+  .study{text-align:left}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNLC8ZYKC3"></script>
@@ -133,12 +136,12 @@ gtag('config', 'G-NNLC8ZYKC3');
 <div class="wrap">
   <p class="eyebrow">AI Agent · 2024</p>
   <h1>ArchInspire</h1>
-  <p class="lede">AI copilot for architectural concept design via design-by-analogy (GPT-4V annotation, custom generative models)</p>
+  <p class="lede">AI copilot for architectural concept design via design-by-analogy (vision-language annotation, custom generative models)</p>
 
 
   <div class="meta">
-    <div><div class="k">Role</div><div class="v">Lead</div></div>
-    <div><div class="k">Affiliation / Context</div><div class="v">Research project (under revision)</div></div>
+    <div><div class="k">Role</div><div class="v">Lead Researcher</div></div>
+    <div><div class="k">Affiliation / Context</div><div class="v">Research project</div></div>
     <div><div class="k">Year</div><div class="v">2024</div></div>
     <div><div class="k">Scale</div><div class="v">Medium</div></div>
     <div style="grid-column:1/-1"><div class="k">Tech Stack</div><div class="v">LLM Annotation · Custom Generative Models · Search Engine · Dataset Curation</div></div>
@@ -162,27 +165,29 @@ gtag('config', 'G-NNLC8ZYKC3');
       <img loading="lazy" src="../media/archinspire/img-01.png" alt="">
     </div>
     <div class="scol">
-      <p>AI Copilot for Fostering Abstract Inspirations in Architectural Concept Design through Design by Analogy</p>
-      <p><a href="https://chatgpt.com/g/g-FjjTnmN3F-arch-visual-linker" target="_blank" rel="noopener">Agent link</p>
-      <p><a href="https://archvisuallinker.notion.site/ArchInspire-Image-Sample-1f7a545f220943409b9288ff9ee52d36" target="_blank" rel="noopener">Project Wesite</p>
-      <p><a href="https://github.com/Emmmmmmaa/Architecture-Visual-Linker-Tag-Dataset" target="_blank" rel="noopener">Dataset</p>
+      <p><a href="https://chatgpt.com/g/g-FjjTnmN3F-arch-visual-linker" target="_blank" rel="noopener">Agent link</a></p>
     </div>
   </div>
   <div class="srow cols-1">
     <div class="scol">
-      <p>In architectural concept design, transposing external stimuli through design by analogy offers profound inspiration, as seen in iconic structures like the Sydney Opera House. This approach goes beyond superficial visual similarities, aiming for deeper conceptual connections that enhance creativity and understanding of the built environment. However, existing AI tools often miss this nuanced abstraction, focusing primarily on visual aspects. This paper introduces an AI-augmented design copilot that enhances conceptual abstraction by leveraging extensive datasets, advanced annotation using GPT-4V, and custom generative models, all seamlessly integrated to provide three key functions: an architectural search engine, bidirectional object-based architectural analysis, and an architectural design generator, creating a powerful tool for architectural inspiration. Validated through mixed-method evaluations with architects, the tool significantly improves creativity, innovation, and efficiency in the architectural design process, illustrating AI&#x27;s potential to elevate architectural creativity and expand the horizons of design thinking.</p>
+      <p>In architectural concept design, transposing external stimuli through design by analogy offers profound inspiration, as seen in iconic structures like the Sydney Opera House. This approach goes beyond superficial visual similarities, aiming for deeper conceptual connections that enhance creativity and understanding of the built environment. However, existing AI tools often miss this nuanced abstraction, focusing primarily on visual aspects. This paper introduces an AI-augmented design copilot that enhances conceptual abstraction by leveraging extensive datasets, advanced annotation using vision-language models, and custom generative models, all seamlessly integrated to provide three key functions: an architectural search engine, bidirectional object-based architectural analysis, and an architectural design generator, creating a powerful tool for architectural inspiration. Validated through mixed-method evaluations with architects, the tool significantly improves creativity, innovation, and efficiency in the architectural design process, illustrating AI&#x27;s potential to elevate architectural creativity and expand the horizons of design thinking.</p>
     </div>
   </div>
   <div class="srow cols-1">
     <div class="scol">
-      <img loading="lazy" src="../media/archinspire/img-02.jpg" alt="">
-      <img loading="lazy" src="../media/archinspire/img-03.jpg" alt="">
-      <img loading="lazy" src="../media/archinspire/img-04.png" alt="">
-      <img loading="lazy" src="../media/archinspire/img-05.png" alt="">
-      <img loading="lazy" src="../media/archinspire/img-06.png" alt="">
-      <img loading="lazy" src="../media/archinspire/img-07.jpg" alt="">
-      <img loading="lazy" src="../media/archinspire/img-08.png" alt="">
-      <img loading="lazy" src="../media/archinspire/img-09.png" alt="">
+      <img loading="lazy" src="../media/archinspire/img-04.png" alt="Training and generating pipeline">
+    </div>
+  </div>
+  <div class="srow cols-1">
+    <div class="scol">
+      <img loading="lazy" src="../media/archinspire/img-10.png" alt="">
+      <img loading="lazy" src="../media/archinspire/img-11.png" alt="">
+      <img loading="lazy" src="../media/archinspire/img-12.png" alt="">
+    </div>
+  </div>
+  <div class="srow cols-1">
+    <div class="scol">
+      <p><a href="https://archvisuallinker.notion.site/ArchInspire-Image-Sample-1f7a545f220943409b9288ff9ee52d36" target="_blank" rel="noopener">Dataset sample ↗</a></p>
     </div>
   </div>
 </div>

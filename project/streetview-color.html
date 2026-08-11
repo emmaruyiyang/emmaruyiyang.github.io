@@ -92,7 +92,7 @@
 
   /* ---------- case study (imported from ruyiyang.com) ---------- */
   .study{margin-top:56px;border-top:1px solid var(--line);padding-top:52px}
-  .study .st-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);margin-bottom:34px}
+  .study .st-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);margin:0 0 34px;max-width:none}
   .srow{display:grid;gap:26px;align-items:center;margin:0 0 42px}
   .srow.cols-1{grid-template-columns:1fr}
   .srow.cols-2{grid-template-columns:1fr 1fr}
@@ -110,6 +110,9 @@
   .study .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   .study .doc{display:inline-block;font-size:13px;border:1px solid var(--line);border-radius:100px;padding:9px 18px;margin:8px 0 20px}
   .study .doc:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  /* long-form content reads left-aligned; hero stays centered */
+  .meta{text-align:left}
+  .study{text-align:left}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNLC8ZYKC3"></script>
@@ -137,7 +140,7 @@ gtag('config', 'G-NNLC8ZYKC3');
 
 
   <div class="meta">
-    <div><div class="k">Role</div><div class="v">First author / researcher</div></div>
+    <div><div class="k">Role</div><div class="v">First Author / Researcher</div></div>
     <div><div class="k">Affiliation / Context</div><div class="v">Publications (Frontiers of Architectural Research; SIGraDi 2023)</div></div>
     <div><div class="k">Year</div><div class="v">2023</div></div>
     <div><div class="k">Scale</div><div class="v">Big</div></div>
@@ -148,7 +151,6 @@ gtag('config', 'G-NNLC8ZYKC3');
     <span class="tag">Urban</span>
     <span class="tag">Research</span>
     <span class="tag">CV</span>
-    <span class="tag">Publication</span>
   </div>
 
   <div class="links">
@@ -162,14 +164,21 @@ gtag('config', 'G-NNLC8ZYKC3');
       <img loading="lazy" src="../media/streetview-color/img-01.png" alt="">
     </div>
     <div class="scol">
-      <p>A novel Approach for accessing color harmony of historic buildings via street view image <a href="https://www.sciencedirect.com/science/article/pii/S2095263524000402?via%3Dihub" target="_blank" rel="noopener">Paper</p>
-      <p>Landscapes in Social Media: A Quantitative Analysis of Color Harmony in Historical Buildings <a href="https://papers.cumincad.org/cgi-bin/works/paper/sigradi2023_49" target="_blank" rel="noopener">Paper</p>
+      <p>A novel Approach for accessing color harmony of historic buildings via street view image <a href="https://www.sciencedirect.com/science/article/pii/S2095263524000402?via%3Dihub" target="_blank" rel="noopener">Paper</a></p>
+      <p>Landscapes in Social Media: A Quantitative Analysis of Color Harmony in Historical Buildings <a href="https://papers.cumincad.org/cgi-bin/works/paper/sigradi2023_49" target="_blank" rel="noopener">Paper</a></p>
+    </div>
+  </div>
+  <div class="srow cols-1">
+    <div class="scol">
+      <img loading="lazy" src="../media/streetview-color/img-41.png" alt="">
+      <img loading="lazy" src="../media/streetview-color/img-42.png" alt="">
+      <img loading="lazy" src="../media/streetview-color/img-43.png" alt="">
     </div>
   </div>
   <div class="srow cols-1">
     <div class="scol">
       <div class="sgrid"><img loading="lazy" src="../media/streetview-color/img-02.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-03.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-04.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-05.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-06.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-07.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-08.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-09.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-10.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-11.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-12.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-13.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-14.png" alt=""><img loading="lazy" src="../media/streetview-color/img-15.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-16.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-17.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-18.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-19.png" alt=""><img loading="lazy" src="../media/streetview-color/img-20.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-21.jpg" alt=""></div>
-      <p>Shanghai Historic Building StreetView Full Dataset: <a href="https://github.com/Emmmmmmaa/Color-Harmony-of-Shanghai-Historical-Buildings/" target="_blank" rel="noopener">https://github.com/Emmmmmmaa/Color-Harmony-of-Shanghai-Historical-Buildings/</p>
+      <p>Shanghai Historic Building StreetView Full Dataset: <a href="https://github.com/Emmmmmmaa/Color-Harmony-of-Shanghai-Historical-Buildings/" target="_blank" rel="noopener">https://github.com/Emmmmmmaa/Color-Harmony-of-Shanghai-Historical-Buildings/</a></p>
     </div>
   </div>
   <div class="srow cols-1">
@@ -181,7 +190,7 @@ gtag('config', 'G-NNLC8ZYKC3');
   <div class="srow cols-1">
     <div class="scol">
       <div class="sgrid"><img loading="lazy" src="../media/streetview-color/img-33.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-34.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-35.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-36.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-37.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-38.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-39.jpg" alt=""><img loading="lazy" src="../media/streetview-color/img-40.jpg" alt=""></div>
-      <p>Images of historic buildings that achieved viral popularity on social media, <a href="https://drive.google.com/drive/folders/13cakGnPuEp-2g3tb1zG9QcJK9vxzkDJZ" target="_blank" rel="noopener">samples</p>
+      <p>Images of historic buildings that achieved viral popularity on social media, <a href="https://drive.google.com/drive/folders/13cakGnPuEp-2g3tb1zG9QcJK9vxzkDJZ" target="_blank" rel="noopener">samples</a></p>
     </div>
   </div>
 </div>

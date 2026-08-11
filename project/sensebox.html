@@ -92,7 +92,7 @@
 
   /* ---------- case study (imported from ruyiyang.com) ---------- */
   .study{margin-top:56px;border-top:1px solid var(--line);padding-top:52px}
-  .study .st-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);margin-bottom:34px}
+  .study .st-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);margin:0 0 34px;max-width:none}
   .srow{display:grid;gap:26px;align-items:center;margin:0 0 42px}
   .srow.cols-1{grid-template-columns:1fr}
   .srow.cols-2{grid-template-columns:1fr 1fr}
@@ -110,6 +110,9 @@
   .study .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   .study .doc{display:inline-block;font-size:13px;border:1px solid var(--line);border-radius:100px;padding:9px 18px;margin:8px 0 20px}
   .study .doc:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  /* long-form content reads left-aligned; hero stays centered */
+  .meta{text-align:left}
+  .study{text-align:left}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNLC8ZYKC3"></script>
@@ -137,7 +140,7 @@ gtag('config', 'G-NNLC8ZYKC3');
 
 
   <div class="meta">
-    <div><div class="k">Role</div><div class="v">Team Leader (interaction)</div></div>
+    <div><div class="k">Role</div><div class="v">Team Lead (interaction)</div></div>
     <div><div class="k">Affiliation / Context</div><div class="v">Tongji University, instructor Prof. Chao Yan</div></div>
     <div><div class="k">Year</div><div class="v">2024</div></div>
     <div><div class="k">Scale</div><div class="v">Big</div></div>
@@ -145,10 +148,12 @@ gtag('config', 'G-NNLC8ZYKC3');
   </div>
 
   <div class="tags">
-    <span class="tag">Interaction</span>
-    <span class="tag">Fabrication</span>
-    <span class="tag">MR</span>
+    <span class="tag">Human-Computer Interaction</span>
+    <span class="tag">Mixed Reality</span>
+    <span class="tag">Multimodal Behavioral Recognition</span>
     <span class="tag">Affective Computing</span>
+    <span class="tag">Workspace</span>
+    <span class="tag">User Experience</span>
   </div>
 
   <div class="links">
@@ -163,11 +168,6 @@ gtag('config', 'G-NNLC8ZYKC3');
     </div>
     <div class="scol">
       <p>A Multimodal Computation Framework for Behavioral Recognition and Interaction for Mixed Reality Workspace</p>
-      <p><b>Keywords:</b> Human-Computer Interaction · Mixed Reality · Multimodal Behavioral Recognition · Affective Computing · Workspace · User Experience</p>
-      <p>interaction part: Ruyi Yang (Team Leader), Menghang Liu, Luqi Feng</p>
-      <p>construction part: Jieshi Chen, Jingtong Li, Tianyu Zhang</p>
-      <p>instructor: Professor Chao YAN, Tongji University</p>
-      <p>source code for interaction part: <a href="https://github.com/Emmaruyi/Humanizing-MR" target="_blank" rel="noopener">https://github.com/Emmaruyi/Humanizing-MR</p>
     </div>
   </div>
   <div class="srow cols-1">
@@ -205,10 +205,6 @@ gtag('config', 'G-NNLC8ZYKC3');
       <p>Acquired human data using ZED camera and headset data, with body landmark detection and emotion recognition conducted.</p>
       <p>Analyzed human data using qualitative and quantitative methods, and formulated rules based on distances, orientations, postures, head states, and expressions to derive interaction, task, attention, and emotional patterns.</p>
       <p>Implemented real-time spatial changes based on human data, affecting spatial enclosure, height, openness, regularity, and color, using Grasshopper, Unity, and Python. Integrated with physical spaces to create dynamic virtual environments that adapt to human work states.</p>
-      <p>▪利用混合现实技术辅助弯曲钢管，构建 3*3*3m 的安装空间原型；</p>
-      <p>▪部署ZED 摄像头和VR头显设备获取人体数据，实现精准的人体关键点检测和情绪识别；</p>
-      <p>▪综合运用定性和定量分析方法，构建空间感知规则库（距离、方向、姿势、头部状态和表情），建立人机交互模型（互动、任务、注意力和情绪模式）；</p>
-      <p>▪研发多模态空间响应系统，整合Python数据处理、Grasshopper参数化建模、Unity实时渲染技术栈，根据人类数据实时实现空间围合、高度、开放度、规则性和颜色的动态响应，并与物理空间集成，创建适应人类工作状态的动态虚拟环境</p>
       <img loading="lazy" src="../media/sensebox/img-05.png" alt="">
     </div>
     <div class="scol">

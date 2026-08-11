@@ -352,11 +352,6 @@ gtag('config', 'G-NNLC8ZYKC3');
 
   <p class="small-label">Studies</p>
 
-  <a class="item small" data-cat="creation" data-year="2026" href="project/dance-music.html">
-    <span class="ph"><img loading="lazy" src="covers/motion-stream.jpg" alt="Motion Stream"></span>
-    <span class="cap">Motion Stream<small>Dance → Music</small></span>
-  </a>
-
   <a class="item small" data-cat="creation interaction" data-year="2026" href="project/gesture-music.html">
     <span class="ph"><img loading="lazy" src="covers/gestural-stream.jpg" alt="Gestural Stream"></span>
     <span class="cap">Gestural Stream<small>Touchless Control</small></span>
@@ -367,7 +362,8 @@ gtag('config', 'G-NNLC8ZYKC3');
     <span class="cap">Lookalike<small>Visual Similarity · Social</small></span>
   </a>
 
-  <a class="item small" data-cat="creation" data-year="2026" href="https://github.com/emmaruyiyang" target="_blank">
+  <!-- CodeDuck link disabled for now; restore with href="https://github.com/emmaruyiyang" target="_blank" -->
+  <a class="item small" data-cat="creation" data-year="2026">
     <span class="ph has-video"><img loading="lazy" src="covers/codeduck.jpg" alt="CodeDuck"><video src="covers/codeduck.mp4" autoplay muted loop playsinline></video></span>
     <span class="cap">CodeDuck<small>Desktop Rubber-duck Companion</small></span>
   </a>
@@ -392,6 +388,11 @@ gtag('config', 'G-NNLC8ZYKC3');
     <span class="cap">Membrane Pavilion<small>Digital FUTURES</small></span>
   </a>
 
+  <a class="item small" data-cat="creation" data-year="2026" href="project/dance-music.html">
+    <span class="ph"><img loading="lazy" src="covers/motion-stream.jpg" alt="Motion Stream"></span>
+    <span class="cap">Motion Stream<small>Dance → Music · WIP</small></span>
+  </a>
+
 </div>
 
 <div class="orbit-hint">
@@ -406,7 +407,7 @@ gtag('config', 'G-NNLC8ZYKC3');
     <a href="https://github.com/emmaruyiyang" target="_blank">GitHub</a>
     <a href="https://www.linkedin.com/in/emma-ruyi-yang/" target="_blank">LinkedIn</a>
   </div>
-  <p class="fin">© 2026 Ruyi Yang</p>
+  <p class="fin"><a href="stats.html" aria-label="Site stats">©</a> 2026 Ruyi Yang</p>
 </div>
 
 <div class="arch-overlay" id="archOverlay">
@@ -468,7 +469,7 @@ const applyOrder = ()=>items.forEach(it=>{
   const v = it.getAttribute("data-ord-"+curFilter);
   it.style.order = v ? v : "";
 });
-/* hide the "Small Projects" label when no small project is in the current filter */
+/* hide the "Studies" label when no small project is in the current filter */
 const smallLabel = document.querySelector(".small-label");
 const syncLabel = ()=>{
   const any = [...document.querySelectorAll(".item.small")].some(i=>!i.classList.contains("hide"));
@@ -538,7 +539,7 @@ modeBtn.addEventListener("click", ()=>{
 galleryEl.addEventListener("wheel", e=>{
   if(!beta) return;
   e.preventDefault();
-  wheelOff += (e.deltaY + e.deltaX) * 0.04;
+  wheelOff -= (e.deltaY + e.deltaX) * 0.04;
   layoutWheel(true);
 },{passive:false});
 
