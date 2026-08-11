@@ -1,2 +1,5 @@
 .DS_Store
 .claude/
+
+# Google OAuth credential downloads — contain client_secret, never commit
+client_secret_*.json
