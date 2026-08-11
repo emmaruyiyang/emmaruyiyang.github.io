@@ -11,7 +11,7 @@
     --ink:#111;
     --ink-2:#8a8a8e;
     --line:rgba(0,0,0,.09);
-    --gap:14px;
+    --gap:48px;
     --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Inter,sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -99,12 +99,12 @@
   .item.hide{display:none}
   .item .ph{
     width:100%;overflow:hidden;position:relative;display:block;
-    border-radius:4px;background:#f4f4f4;
+    border-radius:4px;background:#fff;
     aspect-ratio:16/9;
   }
 
   .item img, .item video{
-    width:100%;height:100%;object-fit:cover;display:block;
+    width:100%;height:100%;object-fit:cover;display:block;   /* fill frame, minimal crop */
     transform:scale(1.02);
     transition:transform 1.1s cubic-bezier(.22,1,.36,1),opacity .5s;
     will-change:transform;
@@ -158,6 +158,7 @@
     aspect-ratio:3/4;border-radius:10px;
     box-shadow:0 30px 60px -30px rgba(0,0,0,.28);
   }
+  body.beta .item img, body.beta .item video{object-fit:cover}  /* fill card, minimal crop */
   body.beta .item img{filter:saturate(1)}
   body.beta .cap{display:none}
   body.beta .intro{padding-bottom:2vh}
@@ -224,7 +225,7 @@
     display:flex;flex-direction:column;gap:18px;
   }
   .foot .mail{
-    font-size:clamp(26px,4.5vw,54px);font-weight:650;letter-spacing:-.03em;
+    font-size:clamp(18px,2.6vw,30px);font-weight:650;letter-spacing:-.02em;
     width:fit-content;position:relative;
   }
   .foot .mail::after{
@@ -237,6 +238,14 @@
   .foot .row a:hover{color:var(--ink)}
   .foot .fin{font-size:11.5px;color:var(--ink-2);margin-top:26px}
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NNLC8ZYKC3"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-NNLC8ZYKC3');
+</script>
 </head>
 <body>
 
@@ -244,8 +253,8 @@
   <a class="name" href="#">Ruyi Yang</a>
   <div class="links">
     <button class="mode" id="modeBtn">Orbit&nbsp;· beta</button>
-    <a href="https://www.ruyiyang.com/about" target="_blank">About</a>
-    <a href="mailto:emmaruyi@mit.edu">Contact</a>
+    <a href="skills.html">Skills</a>
+    <a href="contact.html">Contact</a>
   </div>
 </div>
 
@@ -255,132 +264,132 @@
     <span class="w"><span><em>Agents,&nbsp;generative&nbsp;media,</em>&nbsp;</span></span>
     <span class="w"><span><em>real-time&nbsp;interaction.</em></span></span>
   </h1>
-  <p class="sub">Harvard Computational Design · MIT visiting researcher · prev. Adobe, TikTok, Alibaba, BCG</p>
+  <p class="sub">Harvard Computational Design · prev. Adobe, TikTok, Alibaba, BCG</p>
 </div>
 
 <div class="filters" id="filters">
   <button class="f on" data-f="all">All</button>
+  <button class="f" data-f="urban">Urban</button>
   <button class="f" data-f="agent">Agents</button>
   <button class="f" data-f="creation">AI Creation</button>
   <button class="f" data-f="interaction">Interaction</button>
-  <button class="f" data-f="urban">Urban</button>
   <button class="f" data-f="research">Research</button>
   <button class="f" data-f="fabrication">Fabrication/Robotics</button>
 </div>
 
 <div class="gallery" id="gallery">
 
-  <a class="item" data-cat="agent" href="project/fitme.html">
+  <a class="item" data-cat="agent" data-year="2025" href="project/fitme.html">
     <span class="ph has-video"><img loading="lazy" src="covers/fitme.jpg" alt="FitMe"><video src="covers/fitme.mp4" autoplay muted loop playsinline></video></span>
     <span class="cap">FitMe<small>AI Fashion Agent</small></span>
   </a>
 
-  <a class="item small" data-cat="creation" href="project/dance-music.html">
-    <span class="ph"><img loading="lazy" src="covers/motion-stream.jpg" alt="Motion Stream"></span>
-    <span class="cap">Motion Stream<small>Dance → Music</small></span>
-  </a>
-
-  <a class="item" data-cat="urban research" data-ord-research="3" href="project/senseable-city-lab.html">
-    <span class="ph"><img loading="lazy" src="covers/favela4d.jpg" alt="Favela 4D"></span>
-    <span class="cap">Favela 4D<small>@ MIT Senseable City Lab</small></span>
-  </a>
-
-  <a class="item" data-cat="agent creation" href="project/scrollmind.html">
-    <span class="ph has-video"><img loading="lazy" src="covers/scrollmind.jpg" alt="ScrollMind"><video src="covers/scrollmind.mp4" autoplay muted loop playsinline></video></span>
-    <span class="cap">ScrollMind<small>Intent-controlled Feed</small></span>
-  </a>
-
-  <a class="item" data-cat="interaction fabrication" href="project/sensebox.html">
-    <span class="ph"><img loading="lazy" src="covers/sensebox.jpg" alt="SenseBox"></span>
-    <span class="cap">SenseBox<small>MR Workspace</small></span>
-  </a>
-
-  <a class="item" data-cat="creation research" data-ord-research="4" href="project/meme.html">
+  <a class="item" data-cat="creation research" data-ord-research="4" data-year="2026" href="project/meme.html">
     <span class="ph"><img loading="lazy" src="covers/memesonic.jpg" alt="MemeSonic"></span>
     <span class="cap">MemeSonic<small>Meme → Audio · MIT MMAI</small></span>
   </a>
 
-  <a class="item" data-cat="interaction urban" href="project/pet-vision.html">
-    <span class="ph"><img loading="lazy" src="covers/petvision.jpg" alt="Pet Vision"></span>
-    <span class="cap">Pet's City Vision<small>VR · Animal Perception</small></span>
+  <a class="item" data-cat="agent creation" data-year="2025" href="project/scrollmind.html">
+    <span class="ph has-video"><img loading="lazy" src="covers/scrollmind.jpg" alt="ScrollMind"><video src="covers/scrollmind.mp4" autoplay muted loop playsinline></video></span>
+    <span class="cap">ScrollMind<small>Intent-controlled Feed</small></span>
   </a>
 
-  <a class="item" data-cat="agent" href="project/archinspire.html">
-    <span class="ph has-video"><img loading="lazy" src="covers/archinspire.jpg" alt="ArchInspire"><video src="covers/archinspire.mp4" autoplay muted loop playsinline></video></span>
-    <span class="cap">ArchInspire<small>Design-by-Analogy Copilot</small></span>
+  <a class="item" data-cat="interaction fabrication" data-year="2024" href="project/sensebox.html">
+    <span class="ph"><img loading="lazy" src="covers/sensebox.jpg" alt="SenseBox"></span>
+    <span class="cap">SenseBox<small>MR Workspace</small></span>
   </a>
 
-  <a class="item small" data-cat="creation interaction" href="project/gesture-music.html">
-    <span class="ph"><img loading="lazy" src="covers/gestural-stream.jpg" alt="Gestural Stream"></span>
-    <span class="cap">Gestural Stream<small>Touchless Control</small></span>
-  </a>
-
-  <a class="item" data-cat="interaction fabrication" href="project/interactive-pavilion-fir-structure.html">
+  <a class="item" data-cat="interaction fabrication" data-year="2025" href="project/interactive-pavilion-fir-structure.html">
     <span class="ph"><img loading="lazy" src="covers/whispering-fir.jpg" alt="Whispering Fir"></span>
     <span class="cap">Whispering Fir<small>Interactive Pavilion</small></span>
   </a>
 
-  <a class="item" data-cat="agent" href="project/skinme.html">
-    <span class="ph"><img loading="lazy" src="covers/skinme.jpg" alt="SkinMe"></span>
-    <span class="cap">SkinMe<small>Skincare Agent · AC215</small></span>
+  <a class="item" data-cat="agent" data-year="2024" href="project/archinspire.html">
+    <span class="ph has-video"><img loading="lazy" src="covers/archinspire.jpg" alt="ArchInspire"><video src="covers/archinspire.mp4" autoplay muted loop playsinline></video></span>
+    <span class="cap">ArchInspire<small>Design-by-Analogy Copilot</small></span>
   </a>
 
-  <a class="item small" data-cat="creation" href="project/lookalike.html">
-    <span class="ph"><img loading="lazy" src="covers/lookalike.jpg" alt="Lookalike"></span>
-    <span class="cap">Lookalike<small>Visual Similarity · Social</small></span>
-  </a>
-
-  <a class="item" data-cat="urban research" data-ord-research="1" href="project/streetview-color.html">
-    <span class="ph"><img loading="lazy" src="covers/streetview-color.jpg" alt="Street View Color"></span>
-    <span class="cap">Street View Color<small>SCI Q1 Publication</small></span>
-  </a>
-
-  <a class="item" data-cat="fabrication creation" href="project/robotic.html">
+  <a class="item" data-cat="fabrication creation" data-year="2023" href="project/robotic.html">
     <span class="ph"><img loading="lazy" src="covers/robotic.jpg" alt="Robotic Restoration"></span>
     <span class="cap">Robotic Restoration<small>AI + Robot Arm</small></span>
   </a>
 
-  <a class="item" data-cat="urban" href="project/socity-dao.html">
-    <span class="ph"><img loading="lazy" src="covers/greencommute.jpg" alt="GreenCommute"></span>
-    <span class="cap">GreenCommute<small>@ MIT Media Lab</small></span>
+  <a class="item" data-cat="agent" data-year="2025" href="project/skinme.html">
+    <span class="ph"><img loading="lazy" src="covers/skinme.jpg" alt="SkinMe"></span>
+    <span class="cap">SkinMe<small>Skincare Agent · AC215</small></span>
   </a>
 
-  <a class="item" data-cat="urban research" data-ord-research="2" href="project/treeplanter.html">
+  <a class="item" data-cat="urban research" data-ord-research="3" data-ord-urban="4" data-year="2024" href="project/senseable-city-lab.html">
+    <span class="ph"><img loading="lazy" src="covers/favela4d.jpg" alt="Favela 4D"></span>
+    <span class="cap">Favela 4D<small>@ MIT Senseable City Lab</small></span>
+  </a>
+
+  <a class="item" data-cat="urban research" data-ord-research="1" data-ord-urban="1" data-year="2023" href="project/streetview-color.html">
+    <span class="ph"><img loading="lazy" src="covers/streetview-color.jpg" alt="Street View Color"></span>
+    <span class="cap">Street View Color<small>SCI Q1 Publication</small></span>
+  </a>
+
+  <a class="item" data-cat="urban research" data-ord-research="2" data-ord-urban="2" data-year="2023" href="project/treeplanter.html">
     <span class="ph"><img loading="lazy" src="covers/treeplanter.jpg" alt="TreePlanter"></span>
     <span class="cap">TreePlanter<small>Generative Urban Greenery</small></span>
   </a>
 
-  <a class="item" data-cat="urban" href="project/beijing-hutong.html">
-    <span class="ph"><img loading="lazy" src="covers/beijing-hutong.jpg" alt="Beijing Hutong"></span>
-    <span class="cap">Beijing Hutong<small>NLP × Urban Memory</small></span>
+  <a class="item" data-cat="urban" data-ord-urban="5" data-year="2024" href="project/socity-dao.html">
+    <span class="ph"><img loading="lazy" src="covers/greencommute.jpg" alt="GreenCommute"></span>
+    <span class="cap">GreenCommute<small>@ MIT Media Lab</small></span>
   </a>
 
-  <a class="item" data-cat="urban" href="project/hengfu.html">
+  <a class="item" data-cat="urban" data-ord-urban="3" data-year="2023" href="project/hengfu.html">
     <span class="ph"><img loading="lazy" src="covers/hengfu.jpg" alt="Hengfu Vitality"></span>
     <span class="cap">Hengfu Vitality<small>pix2pix Facade Generator</small></span>
   </a>
 
-  <a class="item" data-cat="fabrication" href="project/chair.html">
-    <span class="ph"><img loading="lazy" src="covers/ychair.jpg" alt="Y Chair"></span>
-    <span class="cap">Y Chair<small>AI-driven Tectonics</small></span>
-  </a>
-
-  <a class="item" data-cat="fabrication" href="project/membrane.html">
-    <span class="ph"><img loading="lazy" src="covers/membrane.jpg" alt="Membrane Pavilion"></span>
-    <span class="cap">Membrane Pavilion<small>Digital FUTURES</small></span>
+  <a class="item" id="archCard" data-cat="fabrication" data-year="2023" href="#arch">
+    <span class="ph"><img loading="lazy" src="arch/plaza-aerial.jpg" alt="Architecture"></span>
+    <span class="cap">Architecture<small>Buildings · Drawings · AI Studies</small></span>
   </a>
 
 
-  <p class="small-label">Experiments</p>
+  <p class="small-label">Studies</p>
 
-  <a class="item small" data-cat="creation" href="https://github.com/Emmmmmmaa" target="_blank">
+  <a class="item small" data-cat="creation" data-year="2026" href="project/dance-music.html">
+    <span class="ph"><img loading="lazy" src="covers/motion-stream.jpg" alt="Motion Stream"></span>
+    <span class="cap">Motion Stream<small>Dance → Music</small></span>
+  </a>
+
+  <a class="item small" data-cat="creation interaction" data-year="2026" href="project/gesture-music.html">
+    <span class="ph"><img loading="lazy" src="covers/gestural-stream.jpg" alt="Gestural Stream"></span>
+    <span class="cap">Gestural Stream<small>Touchless Control</small></span>
+  </a>
+
+  <a class="item small" data-cat="creation" data-year="2026" href="project/lookalike.html">
+    <span class="ph"><img loading="lazy" src="covers/lookalike.jpg" alt="Lookalike"></span>
+    <span class="cap">Lookalike<small>Visual Similarity · Social</small></span>
+  </a>
+
+  <a class="item small" data-cat="creation" data-year="2026" href="https://github.com/emmaruyiyang" target="_blank">
     <span class="ph has-video"><img loading="lazy" src="covers/codeduck.jpg" alt="CodeDuck"><video src="covers/codeduck.mp4" autoplay muted loop playsinline></video></span>
     <span class="cap">CodeDuck<small>Desktop Rubber-duck Companion</small></span>
   </a>
 
-  <a class="item" id="archCard" data-cat="fabrication" href="#arch">
-    <span class="ph"><img loading="lazy" src="arch/plaza-aerial.jpg" alt="Architecture"></span>
-    <span class="cap">Architecture<small>Buildings · Drawings · AI Studies</small></span>
+  <a class="item small" data-cat="interaction urban" data-year="2024" href="project/pet-vision.html">
+    <span class="ph"><img loading="lazy" src="covers/petvision.jpg" alt="Pet Vision"></span>
+    <span class="cap">Pet's City Vision<small>VR · Animal Perception</small></span>
+  </a>
+
+  <a class="item small" data-cat="fabrication" data-year="2024" href="project/chair.html">
+    <span class="ph"><img loading="lazy" src="covers/ychair.jpg" alt="Y Chair"></span>
+    <span class="cap">Y Chair<small>AI-driven Tectonics</small></span>
+  </a>
+
+  <a class="item small" data-cat="urban" data-year="2023" href="project/beijing-hutong.html">
+    <span class="ph"><img loading="lazy" src="covers/beijing-hutong.jpg" alt="Beijing Hutong"></span>
+    <span class="cap">Beijing Hutong<small>NLP × Urban Memory</small></span>
+  </a>
+
+  <a class="item small" data-cat="fabrication" data-year="2023" href="project/membrane.html">
+    <span class="ph"><img loading="lazy" src="covers/membrane.jpg" alt="Membrane Pavilion"></span>
+    <span class="cap">Membrane Pavilion<small>Digital FUTURES</small></span>
   </a>
 
 </div>
@@ -391,10 +400,10 @@
 </div>
 
 <div class="foot">
-  <a class="mail" href="mailto:emmaruyi@mit.edu">emmaruyi@mit.edu</a>
   <div class="row">
-    <a href="https://github.com/Emmmmmmaa" target="_blank">GitHub</a>
-    <a href="https://www.ruyiyang.com" target="_blank">Full Site</a>
+    <a href="contact.html">Contact</a>
+    <a href="skills.html">Skills</a>
+    <a href="https://github.com/emmaruyiyang" target="_blank">GitHub</a>
     <a href="https://www.linkedin.com/in/emma-ruyi-yang/" target="_blank">LinkedIn</a>
   </div>
   <p class="fin">© 2026 Ruyi Yang</p>
@@ -451,13 +460,15 @@ const ordOf = it=>{
   const v = it.getAttribute("data-ord-"+curFilter);
   return v ? parseInt(v) : 999;
 };
+/* orbit lays cards out chronologically — oldest on the left, newest on the right */
+const yearOf = it=>parseInt(it.dataset.year||"0");
 const visible = ()=>items.filter(i=>!i.classList.contains("hide"))
-                        .sort((a,b)=>ordOf(a)-ordOf(b));
+                        .sort((a,b)=>yearOf(a)-yearOf(b));
 const applyOrder = ()=>items.forEach(it=>{
   const v = it.getAttribute("data-ord-"+curFilter);
   it.style.order = v ? v : "";
 });
-/* hide the "Experiments" label when no small project is in the current filter */
+/* hide the "Small Projects" label when no small project is in the current filter */
 const smallLabel = document.querySelector(".small-label");
 const syncLabel = ()=>{
   const any = [...document.querySelectorAll(".item.small")].some(i=>!i.classList.contains("hide"));
@@ -498,9 +509,10 @@ function layoutWheel(animate=true){
   if(center){
     const t = center.querySelector(".cap").childNodes[0].textContent;
     const s = center.querySelector(".cap small").textContent;
+    const y = center.dataset.year ? center.dataset.year+" · " : "";
     if(ocTitle.textContent !== t){
       gsap.fromTo(ocBox,{opacity:0,y:6},{opacity:1,y:0,duration:.4,ease:"power2.out"});
-      ocTitle.textContent = t; ocSub.textContent = s;
+      ocTitle.textContent = t; ocSub.textContent = y + s;
     }
   }
 }
@@ -605,11 +617,8 @@ const ARCH = [
   {s:"arch/hybrid-1.jpg",      t:"Hybrid FUTURES",           d:"Controllable generation — Stable Diffusion"},
   {s:"arch/hybrid-2.jpg",      t:"Hybrid FUTURES",           d:"ControlNet scribble study"},
   {s:"arch/ai-01.png",         t:"AI Studies",               d:"Crumpled-bottle museum"},
-  {s:"arch/ai-02.png",         t:"AI Studies",               d:"Luminous vault pavilion"},
-  {s:"arch/ai-03.png",         t:"AI Studies",               d:"Folded plane house"},
   {s:"arch/ai-04.png",         t:"AI Studies",               d:"Dune hall"},
   {s:"arch/ai-05.png",         t:"AI Studies",               d:"Petal assembly"},
-  {s:"arch/ai-06.png",         t:"AI Studies",               d:"Courtyard drum"},
   {s:"arch/ai-07.png",         t:"AI Studies",               d:"Shell canopy"},
 ];
 const archOverlay = document.getElementById("archOverlay");
@@ -637,7 +646,8 @@ function renderArch(vel=0, sq=1){
   const ease = sp*sp*(3-2*sp);                         /* smoothstep unfold */
   const tilt = gsap.utils.clamp(-8, 8, vel*90);        /* velocity-reactive lean */
   const acc = 0.45 + 0.55*sq;                          /* mild accordion on fast browse */
-  const gapx = GAPX()*ease*acc, gapz = GAPZ*ease*acc;
+  /* keep a small minimum offset so the folded deck never fully overlaps */
+  const gapx = Math.max(GAPX()*ease*acc, 10), gapz = Math.max(GAPZ*ease*acc, 8);
   const folded = ease < 0.97;
   for(let i=0;i<panels.length;i++){
     const o = i - pos;
@@ -726,6 +736,21 @@ fs.forEach(btn=>{
   const f = btn.dataset.f;
   const n = f==="all" ? items.length : items.filter(i=>i.dataset.cat.split(" ").includes(f)).length;
   btn.insertAdjacentHTML("beforeend", `<sup>${n}</sup>`);
+});
+
+/* ---- analytics: project card + contact clicks ---- */
+items.forEach(it=>{
+  it.addEventListener("click", ()=>{
+    const cap = it.querySelector(".cap");
+    const name = cap ? cap.childNodes[0].textContent.trim() : "unknown";
+    if(typeof gtag === "function")
+      gtag("event", "select_content", {content_type:"project", item_id:name});
+  });
+});
+document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
+  a.addEventListener("click", ()=>{
+    if(typeof gtag === "function") gtag("event", "contact_click", {method:"email"});
+  });
 });
 </script>
 </body>

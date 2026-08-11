@@ -36,7 +36,7 @@
   .back:hover svg{transform:translateX(-3px)}
   .bar .name{font-size:13px;color:var(--ink-2)}
 
-  .wrap{padding:8vh clamp(24px,8vw,140px) 14vh;max-width:900px}
+  .wrap{padding:8vh clamp(24px,8vw,140px) 14vh;max-width:1020px;margin:0 auto;text-align:center}
 
   .eyebrow{
     font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);
@@ -48,12 +48,12 @@
   }
   .lede{
     font-size:clamp(16px,1.8vw,19px);color:#3a3a3f;line-height:1.55;
-    max-width:60ch;margin-bottom:36px;
+    max-width:60ch;margin:0 auto 36px;
   }
 
   .cover{
     width:100%;aspect-ratio:16/9;border-radius:8px;overflow:hidden;
-    background:#f4f4f4;margin-bottom:40px;position:relative;
+    background:#fff;margin-bottom:40px;position:relative;
   }
   .cover img, .cover video{width:100%;height:100%;object-fit:cover;display:block}
   .cover video{position:absolute;inset:0}
@@ -66,13 +66,13 @@
   .meta div .k{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px}
   .meta div .v{font-size:14px;color:var(--ink);line-height:1.4}
 
-  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:44px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:44px;justify-content:center}
   .tag{
     font-size:12px;color:var(--ink-2);border:1px solid var(--line);
     border-radius:100px;padding:5px 13px;
   }
 
-  .links{display:flex;flex-wrap:wrap;gap:14px}
+  .links{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
   .btn{
     font-size:13px;padding:11px 22px;border-radius:100px;
     border:1px solid var(--ink);transition:all .3s;
@@ -86,7 +86,39 @@
     padding:10vh clamp(24px,8vw,140px) 8vh;border-top:1px solid var(--line);
     font-size:12px;color:var(--ink-2);
   }
+
+
+
+
+  /* ---------- case study (imported from ruyiyang.com) ---------- */
+  .study{margin-top:56px;border-top:1px solid var(--line);padding-top:52px}
+  .study .st-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);margin-bottom:34px}
+  .srow{display:grid;gap:26px;align-items:center;margin:0 0 42px}
+  .srow.cols-1{grid-template-columns:1fr}
+  .srow.cols-2{grid-template-columns:1fr 1fr}
+  .srow.cols-3{grid-template-columns:repeat(3,1fr)}
+  .srow.cols-4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:700px){.srow.cols-2,.srow.cols-3,.srow.cols-4{grid-template-columns:1fr}}
+  .study h2{font-size:clamp(19px,2.2vw,26px);font-weight:650;letter-spacing:-.02em;margin:10px 0 12px}
+  .study p{font-size:15px;line-height:1.7;color:#3a3a3f;margin:0 auto 12px;max-width:72ch}
+  .study p a{border-bottom:1px solid var(--line)}
+  .study p a:hover{border-color:var(--ink)}
+  .study img{width:100%;height:auto;border-radius:6px;display:block;margin:0 0 14px}
+  .study .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:0 0 14px}
+  .study .sgrid img{aspect-ratio:4/3;object-fit:cover;margin:0}
+  .study .vid{position:relative;aspect-ratio:16/9;margin:0 0 14px;border-radius:6px;overflow:hidden;background:#000}
+  .study .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .study .doc{display:inline-block;font-size:13px;border:1px solid var(--line);border-radius:100px;padding:9px 18px;margin:8px 0 20px}
+  .study .doc:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NNLC8ZYKC3"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-NNLC8ZYKC3');
+</script>
 </head>
 <body>
 
@@ -103,13 +135,13 @@
   <h1>SenseBox</h1>
   <p class="lede">Multimodal behavioral recognition + interaction framework for a mixed-reality workspace (3m steel-pipe installation)</p>
 
-  <div class="cover"><img loading="lazy" src="../covers/sensebox.jpg" alt="SenseBox"></div>
 
   <div class="meta">
     <div><div class="k">Role</div><div class="v">Team Leader (interaction)</div></div>
     <div><div class="k">Affiliation / Context</div><div class="v">Tongji University, instructor Prof. Chao Yan</div></div>
     <div><div class="k">Year</div><div class="v">2024</div></div>
-    <div><div class="k">Scale</div><div class="v">big</div></div>
+    <div><div class="k">Scale</div><div class="v">Big</div></div>
+    <div style="grid-column:1/-1"><div class="k">Tech Stack</div><div class="v">Landmark & Emotion Recognition · Python · Unity · Grasshopper · ZED Camera · Quest 3</div></div>
   </div>
 
   <div class="tags">
@@ -120,9 +152,73 @@
   </div>
 
   <div class="links">
-    <a class="btn primary" href="https://www.ruyiyang.com/home/sensebox" target="_blank" rel="noopener">View full case study ↗</a>
+    <!-- case-study link (hidden, keep in sync with source page): <a class="btn primary" href="https://www.ruyiyang.com/home/sensebox" target="_blank" rel="noopener">View full case study ↗</a> -->
     <a class="btn secondary" href="https://github.com/Emmaruyi/Humanizing-MR" target="_blank" rel="noopener">View on GitHub</a>
   </div>
+<div class="study">
+  <p class="st-label">Case Study</p>
+  <div class="srow cols-2">
+    <div class="scol">
+      <img loading="lazy" src="../media/sensebox/img-01.jpg" alt="">
+    </div>
+    <div class="scol">
+      <p>A Multimodal Computation Framework for Behavioral Recognition and Interaction for Mixed Reality Workspace</p>
+      <p><b>Keywords:</b> Human-Computer Interaction · Mixed Reality · Multimodal Behavioral Recognition · Affective Computing · Workspace · User Experience</p>
+      <p>interaction part: Ruyi Yang (Team Leader), Menghang Liu, Luqi Feng</p>
+      <p>construction part: Jieshi Chen, Jingtong Li, Tianyu Zhang</p>
+      <p>instructor: Professor Chao YAN, Tongji University</p>
+      <p>source code for interaction part: <a href="https://github.com/Emmaruyi/Humanizing-MR" target="_blank" rel="noopener">https://github.com/Emmaruyi/Humanizing-MR</p>
+    </div>
+  </div>
+  <div class="srow cols-1">
+    <div class="scol">
+      <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/BeUdE19fljY" title="video" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+    </div>
+  </div>
+  <div class="srow cols-1">
+    <div class="scol">
+      <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/mGQQPErmGX4" title="video" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+      <p>Nebula (2025, Participate as Teaching Assistant)</p>
+    </div>
+  </div>
+  <div class="srow cols-1">
+    <div class="scol">
+      <img loading="lazy" src="../media/sensebox/img-02.png" alt="">
+    </div>
+  </div>
+  <div class="srow cols-2">
+    <div class="scol">
+      <h2>Construction</h2>
+      <p>Framework Design: The workspace box (3m x 3m x 2.5m) features a spiral tri-ring design with a core steel pipe framework. Secondary lines are added and secured with bundling straps, then rotated 180 degrees to create a symmetrical structure, forming the final plan and renderings.</p>
+      <p>Bundling and Node Development: Various bundling methods were explored, resulting in specific bundled nodes for the final design. Each pipe was bent, numbered, and bundled in sequence to form six main components.</p>
+      <p>Construction and Assembly: The assembly process involved bundling parts together, installing depth cameras, and attaching acrylic seat and table surfaces, completing the Sense Box construction.</p>
+    </div>
+    <div class="scol">
+      <img loading="lazy" src="../media/sensebox/img-03.png" alt="">
+      <img loading="lazy" src="../media/sensebox/img-04.png" alt="">
+    </div>
+  </div>
+  <div class="srow cols-2">
+    <div class="scol">
+      <h2>Interaction</h2>
+      <p>Utilized mixed reality technology to assist in bending steel pipes for constructing a 3x3x3m installation space prototype.</p>
+      <p>Acquired human data using ZED camera and headset data, with body landmark detection and emotion recognition conducted.</p>
+      <p>Analyzed human data using qualitative and quantitative methods, and formulated rules based on distances, orientations, postures, head states, and expressions to derive interaction, task, attention, and emotional patterns.</p>
+      <p>Implemented real-time spatial changes based on human data, affecting spatial enclosure, height, openness, regularity, and color, using Grasshopper, Unity, and Python. Integrated with physical spaces to create dynamic virtual environments that adapt to human work states.</p>
+      <p>▪利用混合现实技术辅助弯曲钢管，构建 3*3*3m 的安装空间原型；</p>
+      <p>▪部署ZED 摄像头和VR头显设备获取人体数据，实现精准的人体关键点检测和情绪识别；</p>
+      <p>▪综合运用定性和定量分析方法，构建空间感知规则库（距离、方向、姿势、头部状态和表情），建立人机交互模型（互动、任务、注意力和情绪模式）；</p>
+      <p>▪研发多模态空间响应系统，整合Python数据处理、Grasshopper参数化建模、Unity实时渲染技术栈，根据人类数据实时实现空间围合、高度、开放度、规则性和颜色的动态响应，并与物理空间集成，创建适应人类工作状态的动态虚拟环境</p>
+      <img loading="lazy" src="../media/sensebox/img-05.png" alt="">
+    </div>
+    <div class="scol">
+      <img loading="lazy" src="../media/sensebox/img-06.png" alt="">
+      <img loading="lazy" src="../media/sensebox/img-07.jpg" alt="">
+      <img loading="lazy" src="../media/sensebox/img-08.png" alt="">
+      <img loading="lazy" src="../media/sensebox/img-09.png" alt="">
+    </div>
+  </div>
+</div>
 </div>
 
 <div class="foot">

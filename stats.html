@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Stats — Ruyi Yang</title>
+<style>
+  :root{
+    --bg:#fcfcfc;
+    --ink:#111;
+    --ink-2:#8a8a8e;
+    --line:rgba(0,0,0,.09);
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Inter,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  ::selection{background:#111;color:#fff}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+
+  .bar{
+    position:sticky;top:0;z-index:40;background:var(--bg);
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:22px clamp(24px,8vw,140px);
+    border-bottom:1px solid var(--line);
+  }
+  .back{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2);transition:color .3s}
+  .back:hover{color:var(--ink)}
+  .back svg{width:14px;height:14px;transition:transform .3s}
+  .back:hover svg{transform:translateX(-3px)}
+  .bar .name{font-size:13px;color:var(--ink-2)}
+
+  .wrap{padding:8vh clamp(24px,8vw,140px) 14vh;max-width:1020px;margin:0 auto}
+
+  h1{font-size:clamp(26px,4vw,38px);font-weight:650;letter-spacing:-.03em;margin-bottom:10px}
+  .sub{font-size:14px;color:var(--ink-2);margin-bottom:44px}
+
+  /* ---- password gate ---- */
+  .gate{max-width:340px;margin:14vh auto 0;text-align:center}
+  .gate p{font-size:13px;color:var(--ink-2);margin-bottom:18px}
+  .gate input{
+    width:100%;font-family:var(--font);font-size:15px;padding:12px 16px;
+    border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);
+    outline:none;text-align:center;letter-spacing:.1em;transition:border-color .3s;
+  }
+  .gate input:focus{border-color:var(--ink)}
+  .gate .err{font-size:12px;color:#b3261e;margin-top:12px;min-height:16px}
+
+  /* ---- connect step ---- */
+  .connect{text-align:center;margin-top:8vh}
+  .connect p{font-size:14px;color:var(--ink-2);max-width:52ch;margin:0 auto 24px;line-height:1.6}
+  .btn{
+    display:inline-block;font-size:13px;padding:11px 22px;border-radius:100px;
+    border:1px solid var(--ink);cursor:pointer;background:var(--ink);color:#fff;
+    font-family:var(--font);transition:opacity .3s;
+  }
+  .btn:hover{opacity:.8}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:#fff}
+  .notice{
+    max-width:560px;margin:0 auto 28px;text-align:left;font-size:13px;line-height:1.7;
+    color:var(--ink-2);border:1px solid var(--line);border-radius:8px;padding:18px 22px;
+  }
+  .notice b{color:var(--ink);font-weight:600}
+  .notice code{font-size:12px;background:rgba(0,0,0,.05);border-radius:4px;padding:1px 5px}
+
+  /* ---- dashboard ---- */
+  .kpis{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:24px;
+    padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    margin-bottom:52px;
+  }
+  .kpi .k{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-bottom:8px}
+  .kpi .v{font-size:30px;font-weight:600;letter-spacing:-.02em}
+
+  .sec{margin-bottom:56px}
+  .sec h2{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);font-weight:600;margin-bottom:20px}
+
+  .chart-box{position:relative}
+  .chart-box svg{display:block;width:100%;height:auto}
+  .tip{
+    position:absolute;pointer-events:none;background:#111;color:#fff;border-radius:6px;
+    font-size:12px;line-height:1.5;padding:7px 11px;white-space:nowrap;
+    transform:translate(-50%,-100%);opacity:0;transition:opacity .15s;z-index:5;
+  }
+  .tip small{color:rgba(255,255,255,.65);font-size:11px}
+
+  details.tbl{margin-top:14px}
+  details.tbl summary{font-size:12px;color:var(--ink-2);cursor:pointer;user-select:none}
+  details.tbl summary:hover{color:var(--ink)}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);
+     font-weight:600;text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
+  td{padding:10px 8px;border-bottom:1px solid var(--line);color:var(--ink)}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  td.path{max-width:0;width:70%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  tr:hover td{background:rgba(0,0,0,.02)}
+
+  .load,.fail{font-size:14px;color:var(--ink-2);text-align:center;padding:10vh 0}
+  .fail{color:#b3261e}
+  .hidden{display:none}
+
+  .foot-actions{display:flex;gap:14px;justify-content:center;margin-top:20px}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <a class="back" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    Back to all projects
+  </a>
+  <span class="name">Ruyi Yang</span>
+</div>
+
+<!-- step 1: password gate -->
+<div class="gate" id="gate">
+  <p>This page is private.</p>
+  <input id="pw" type="password" placeholder="password" autocomplete="off" autofocus>
+  <div class="err" id="pwErr"></div>
+</div>
+
+<!-- step 2: connect Google Analytics -->
+<div class="wrap hidden" id="connect">
+  <div class="connect">
+    <div class="notice" id="setupNotice">
+      <b>One-time setup needed</b> — this page reads live data from Google Analytics,
+      which requires two IDs to be filled in at the top of the script in <code>stats.html</code>:<br>
+      1. <code>GA_PROPERTY_ID</code> — GA4 numeric property ID (Analytics → Admin → Property settings).<br>
+      2. <code>OAUTH_CLIENT_ID</code> — Google Cloud Console → APIs &amp; Services → Credentials →
+      Create OAuth client ID (Web application), with <code>https://emmaruyiyang.github.io</code>
+      and <code>http://localhost:8000</code> as authorized JavaScript origins.
+      Also enable the <b>Google Analytics Data API</b> for the project.
+    </div>
+    <p>Sign in with the Google account that owns this site's Analytics property.
+       Data never touches a server — it is fetched directly from Google into this browser tab.</p>
+    <button class="btn" id="signin">Connect Google Analytics</button>
+    <p class="fail hidden" id="connErr"></p>
+  </div>
+</div>
+
+<!-- step 3: dashboard -->
+<div class="wrap hidden" id="dash">
+  <h1>Site traffic</h1>
+  <p class="sub" id="rangeLabel">Last 30 days</p>
+
+  <div class="load" id="loading">Loading data…</div>
+
+  <div class="hidden" id="report">
+    <div class="kpis">
+      <div class="kpi"><div class="k">Visitors</div><div class="v" id="kUsers">—</div></div>
+      <div class="kpi"><div class="k">Pageviews</div><div class="v" id="kViews">—</div></div>
+      <div class="kpi"><div class="k">Avg / day</div><div class="v" id="kAvg">—</div></div>
+      <div class="kpi"><div class="k">Countries</div><div class="v" id="kCountries">—</div></div>
+    </div>
+
+    <div class="sec">
+      <h2>Daily visitors</h2>
+      <div class="chart-box" id="chartBox">
+        <svg id="chart" viewBox="0 0 960 300" role="img" aria-label="Daily visitors, last 30 days"></svg>
+        <div class="tip" id="tip"></div>
+      </div>
+      <details class="tbl">
+        <summary>View as table</summary>
+        <table id="dailyTbl"><thead><tr><th>Date</th><th class="num">Visitors</th><th class="num">Pageviews</th></tr></thead><tbody></tbody></table>
+      </details>
+    </div>
+
+    <div class="sec">
+      <h2>Top pages</h2>
+      <table id="pagesTbl"><thead><tr><th>Page</th><th class="num">Views</th></tr></thead><tbody></tbody></table>
+    </div>
+
+    <div class="sec">
+      <h2>Top countries</h2>
+      <table id="geoTbl"><thead><tr><th>Country</th><th class="num">Visitors</th></tr></thead><tbody></tbody></table>
+    </div>
+
+    <div class="foot-actions">
+      <button class="btn ghost" id="refresh">Refresh</button>
+      <button class="btn ghost" id="signout">Sign out</button>
+    </div>
+  </div>
+
+  <p class="fail hidden" id="dashErr"></p>
+</div>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+/* ============ config ============ */
+/* SHA-256 of the page password. To change it, run in the browser console:
+   crypto.subtle.digest("SHA-256", new TextEncoder().encode("newpassword"))
+     .then(b=>console.log([...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")))   */
+const PASS_HASH = "8fd03e267fb4ec1c54f0c319edb763141ad9b8e81b3689bb594aea2326b45fd4";
+const GA_PROPERTY_ID = "PASTE_GA4_PROPERTY_ID";        // numeric, e.g. "483920175"
+const OAUTH_CLIENT_ID = "PASTE_OAUTH_CLIENT_ID";       // ends in .apps.googleusercontent.com
+const DAYS = 30;
+
+/* ============ password gate ============ */
+const $ = id => document.getElementById(id);
+const sha256 = async s => {
+  const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
+  return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
+};
+const unlocked = () => sessionStorage.getItem("stats-ok") === PASS_HASH;
+
+async function tryUnlock(){
+  const h = await sha256($("pw").value);
+  if(h === PASS_HASH){
+    sessionStorage.setItem("stats-ok", h);
+    enterConnect();
+  }else{
+    $("pwErr").textContent = "Wrong password";
+    $("pw").value = "";
+  }
+}
+$("pw").addEventListener("keydown", e => { if(e.key === "Enter") tryUnlock(); });
+
+function enterConnect(){
+  $("gate").classList.add("hidden");
+  const configured = !GA_PROPERTY_ID.startsWith("PASTE") && !OAUTH_CLIENT_ID.startsWith("PASTE");
+  $("setupNotice").style.display = configured ? "none" : "";
+  if(accessToken){ enterDash(); return; }
+  $("connect").classList.remove("hidden");
+}
+
+/* ============ Google sign-in (implicit token flow) ============ */
+let accessToken = sessionStorage.getItem("stats-token") || null;
+let tokenClient = null;
+
+function initToken(){
+  if(tokenClient || !window.google) return;
+  tokenClient = google.accounts.oauth2.initTokenClient({
+    client_id: OAUTH_CLIENT_ID,
+    scope: "https://www.googleapis.com/auth/analytics.readonly",
+    callback: resp => {
+      if(resp.error){ showConnErr("Sign-in failed: " + resp.error); return; }
+      accessToken = resp.access_token;
+      sessionStorage.setItem("stats-token", accessToken);
+      enterDash();
+    }
+  });
+}
+function showConnErr(msg){
+  const el = $("connErr");
+  el.textContent = msg;
+  el.classList.remove("hidden");
+}
+$("signin").addEventListener("click", () => {
+  if(location.protocol === "file:"){
+    showConnErr("Google sign-in does not work over file:// — serve the site locally (python3 -m http.server) and open http://localhost:8000/stats.html");
+    return;
+  }
+  if(OAUTH_CLIENT_ID.startsWith("PASTE")){
+    showConnErr("OAUTH_CLIENT_ID is not set yet — see the setup note above.");
+    return;
+  }
+  initToken();
+  if(tokenClient) tokenClient.requestAccessToken();
+  else showConnErr("Google sign-in library not loaded yet — try again in a second.");
+});
+
+/* ============ data ============ */
+async function fetchReports(){
+  const body = {
+    requests: [
+      { dateRanges:[{startDate:`${DAYS}daysAgo`, endDate:"today"}],
+        dimensions:[{name:"date"}],
+        metrics:[{name:"activeUsers"},{name:"screenPageViews"}],
+        orderBys:[{dimension:{dimensionName:"date"}}], limit:400 },
+      { dateRanges:[{startDate:`${DAYS}daysAgo`, endDate:"today"}],
+        dimensions:[{name:"pagePath"}],
+        metrics:[{name:"screenPageViews"}],
+        orderBys:[{metric:{metricName:"screenPageViews"}, desc:true}], limit:10 },
+      { dateRanges:[{startDate:`${DAYS}daysAgo`, endDate:"today"}],
+        dimensions:[{name:"country"}],
+        metrics:[{name:"activeUsers"}],
+        orderBys:[{metric:{metricName:"activeUsers"}, desc:true}], limit:8 }
+    ]
+  };
+  const r = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${GA_PROPERTY_ID}:batchRunReports`,{
+    method:"POST",
+    headers:{Authorization:`Bearer ${accessToken}`, "Content-Type":"application/json"},
+    body: JSON.stringify(body)
+  });
+  if(r.status === 401){ throw {auth:true}; }
+  if(!r.ok){
+    const e = await r.json().catch(()=>({}));
+    throw new Error(e.error?.message || `API error ${r.status}`);
+  }
+  return r.json();
+}
+
+const rows = rep => (rep && rep.rows) ? rep.rows : [];
+const fmt = n => n.toLocaleString("en-US");
+const fmtDate = s => { // "20260810" -> Date
+  return new Date(+s.slice(0,4), +s.slice(4,6)-1, +s.slice(6,8));
+};
+const shortDate = d => d.toLocaleDateString("en-US",{month:"short",day:"numeric"});
+
+async function enterDash(){
+  $("connect").classList.add("hidden");
+  $("dash").classList.remove("hidden");
+  $("dashErr").classList.add("hidden");
+  $("loading").classList.remove("hidden");
+  $("report").classList.add("hidden");
+  try{
+    const data = await fetchReports();
+    render(data.reports || []);
+    $("loading").classList.add("hidden");
+    $("report").classList.remove("hidden");
+  }catch(err){
+    $("loading").classList.add("hidden");
+    if(err.auth){
+      sessionStorage.removeItem("stats-token");
+      accessToken = null;
+      $("dash").classList.add("hidden");
+      enterConnect();
+      showConnErr("Session expired — please sign in again.");
+    }else{
+      const el = $("dashErr");
+      el.textContent = "Could not load data: " + err.message;
+      el.classList.remove("hidden");
+    }
+  }
+}
+
+function render([daily, pages, geo]){
+  const d = rows(daily).map(r => ({
+    date: fmtDate(r.dimensionValues[0].value),
+    users: +r.metricValues[0].value,
+    views: +r.metricValues[1].value
+  }));
+  const totalUsers = d.reduce((s,x)=>s+x.users,0);
+  const totalViews = d.reduce((s,x)=>s+x.views,0);
+  $("kUsers").textContent = fmt(totalUsers);
+  $("kViews").textContent = fmt(totalViews);
+  $("kAvg").textContent = d.length ? fmt(Math.round(totalUsers/d.length)) : "0";
+  $("kCountries").textContent = fmt(rows(geo).length);
+
+  drawChart(d);
+
+  $("dailyTbl").querySelector("tbody").innerHTML = d.map(x =>
+    `<tr><td>${shortDate(x.date)}</td><td class="num">${fmt(x.users)}</td><td class="num">${fmt(x.views)}</td></tr>`).join("");
+
+  $("pagesTbl").querySelector("tbody").innerHTML = rows(pages).map(r =>
+    `<tr><td class="path" title="${r.dimensionValues[0].value}">${r.dimensionValues[0].value}</td>
+     <td class="num">${fmt(+r.metricValues[0].value)}</td></tr>`).join("")
+    || `<tr><td colspan="2">No data yet</td></tr>`;
+
+  $("geoTbl").querySelector("tbody").innerHTML = rows(geo).map(r =>
+    `<tr><td>${r.dimensionValues[0].value}</td><td class="num">${fmt(+r.metricValues[0].value)}</td></tr>`).join("")
+    || `<tr><td colspan="2">No data yet</td></tr>`;
+}
+
+/* ---- single-series column chart: ink bars, hairline grid, hover tooltip ---- */
+function drawChart(d){
+  const svg = $("chart"), tip = $("tip"), box = $("chartBox");
+  const W = 960, H = 300, padL = 44, padR = 8, padT = 14, padB = 30;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  svg.innerHTML = "";
+  if(!d.length) return;
+
+  const max = Math.max(...d.map(x=>x.users), 1);
+  /* clean tick step: 1/2/5 × 10^k covering max in ~4 steps */
+  const rawStep = max/4, mag = Math.pow(10, Math.floor(Math.log10(rawStep)));
+  const step = [1,2,5,10].map(m=>m*mag).find(s=>s*4>=max) || 10*mag;
+  const yMax = Math.ceil(max/step)*step;
+  const y = v => padT + plotH*(1 - v/yMax);
+
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+
+  /* hairline gridlines + clean ticks */
+  for(let v=0; v<=yMax; v+=step){
+    svg.append(el("line",{x1:padL,x2:W-padR,y1:y(v),y2:y(v),stroke:"rgba(0,0,0,.07)","stroke-width":1}));
+    const t = el("text",{x:padL-10,y:y(v)+4,"text-anchor":"end","font-size":11,fill:"#8a8a8e",
+                         style:"font-variant-numeric:tabular-nums"});
+    t.textContent = fmt(v);
+    svg.append(t);
+  }
+
+  const band = plotW/d.length;
+  const bw = Math.min(24, band-2);           /* bar ≤24px, ≥2px surface gap */
+  const r = Math.min(4, bw/2);               /* 4px rounded data-end, square baseline */
+
+  d.forEach((x,i)=>{
+    const cx = padL + band*i + band/2;
+    const topY = y(x.users), baseY = y(0);
+    if(x.users > 0){
+      const h = baseY-topY;
+      const path = h <= r
+        ? `M${cx-bw/2},${baseY} v${-h} h${bw} v${h} z`
+        : `M${cx-bw/2},${baseY} v${-(h-r)} q0,${-r} ${r},${-r} h${bw-2*r} q${r},0 ${r},${r} v${h-r} z`;
+      svg.append(el("path",{d:path,fill:"#111"}));
+    }
+    /* x labels roughly weekly */
+    if(i%7===0 || i===d.length-1){
+      const t = el("text",{x:cx,y:H-8,"text-anchor":"middle","font-size":11,fill:"#8a8a8e"});
+      t.textContent = shortDate(x.date);
+      svg.append(t);
+    }
+    /* full-height hover target, wider than the mark */
+    const hit = el("rect",{x:padL+band*i,y:padT,width:band,height:plotH,fill:"transparent"});
+    hit.addEventListener("mouseenter",()=>{
+      const bx = box.getBoundingClientRect(), sx = bx.width/W;
+      tip.innerHTML = `${shortDate(x.date)}<br><b>${fmt(x.users)}</b> visitors <small>· ${fmt(x.views)} views</small>`;
+      tip.style.left = (cx*sx)+"px";
+      tip.style.top  = (Math.max(topY,padT)*sx - 8)+"px";
+      tip.style.opacity = 1;
+    });
+    hit.addEventListener("mouseleave",()=>{ tip.style.opacity = 0; });
+    svg.append(hit);
+  });
+
+  /* baseline */
+  svg.append(el("line",{x1:padL,x2:W-padR,y1:y(0),y2:y(0),stroke:"rgba(0,0,0,.2)","stroke-width":1}));
+}
+
+/* ============ actions ============ */
+$("refresh").addEventListener("click", enterDash);
+$("signout").addEventListener("click", ()=>{
+  sessionStorage.removeItem("stats-token");
+  sessionStorage.removeItem("stats-ok");
+  accessToken = null;
+  location.reload();
+});
+
+/* resume state on load */
+if(unlocked()) enterConnect();
+</script>
+</body>
+</html>

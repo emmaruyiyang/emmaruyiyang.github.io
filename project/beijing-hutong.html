@@ -36,7 +36,7 @@
   .back:hover svg{transform:translateX(-3px)}
   .bar .name{font-size:13px;color:var(--ink-2)}
 
-  .wrap{padding:8vh clamp(24px,8vw,140px) 14vh;max-width:900px}
+  .wrap{padding:8vh clamp(24px,8vw,140px) 14vh;max-width:1020px;margin:0 auto;text-align:center}
 
   .eyebrow{
     font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);
@@ -48,12 +48,12 @@
   }
   .lede{
     font-size:clamp(16px,1.8vw,19px);color:#3a3a3f;line-height:1.55;
-    max-width:60ch;margin-bottom:36px;
+    max-width:60ch;margin:0 auto 36px;
   }
 
   .cover{
     width:100%;aspect-ratio:16/9;border-radius:8px;overflow:hidden;
-    background:#f4f4f4;margin-bottom:40px;position:relative;
+    background:#fff;margin-bottom:40px;position:relative;
   }
   .cover img, .cover video{width:100%;height:100%;object-fit:cover;display:block}
   .cover video{position:absolute;inset:0}
@@ -66,13 +66,13 @@
   .meta div .k{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px}
   .meta div .v{font-size:14px;color:var(--ink);line-height:1.4}
 
-  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:44px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:44px;justify-content:center}
   .tag{
     font-size:12px;color:var(--ink-2);border:1px solid var(--line);
     border-radius:100px;padding:5px 13px;
   }
 
-  .links{display:flex;flex-wrap:wrap;gap:14px}
+  .links{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
   .btn{
     font-size:13px;padding:11px 22px;border-radius:100px;
     border:1px solid var(--ink);transition:all .3s;
@@ -86,7 +86,39 @@
     padding:10vh clamp(24px,8vw,140px) 8vh;border-top:1px solid var(--line);
     font-size:12px;color:var(--ink-2);
   }
+
+
+
+
+  /* ---------- case study (imported from ruyiyang.com) ---------- */
+  .study{margin-top:56px;border-top:1px solid var(--line);padding-top:52px}
+  .study .st-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);margin-bottom:34px}
+  .srow{display:grid;gap:26px;align-items:center;margin:0 0 42px}
+  .srow.cols-1{grid-template-columns:1fr}
+  .srow.cols-2{grid-template-columns:1fr 1fr}
+  .srow.cols-3{grid-template-columns:repeat(3,1fr)}
+  .srow.cols-4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:700px){.srow.cols-2,.srow.cols-3,.srow.cols-4{grid-template-columns:1fr}}
+  .study h2{font-size:clamp(19px,2.2vw,26px);font-weight:650;letter-spacing:-.02em;margin:10px 0 12px}
+  .study p{font-size:15px;line-height:1.7;color:#3a3a3f;margin:0 auto 12px;max-width:72ch}
+  .study p a{border-bottom:1px solid var(--line)}
+  .study p a:hover{border-color:var(--ink)}
+  .study img{width:100%;height:auto;border-radius:6px;display:block;margin:0 0 14px}
+  .study .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:0 0 14px}
+  .study .sgrid img{aspect-ratio:4/3;object-fit:cover;margin:0}
+  .study .vid{position:relative;aspect-ratio:16/9;margin:0 0 14px;border-radius:6px;overflow:hidden;background:#000}
+  .study .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .study .doc{display:inline-block;font-size:13px;border:1px solid var(--line);border-radius:100px;padding:9px 18px;margin:8px 0 20px}
+  .study .doc:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NNLC8ZYKC3"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-NNLC8ZYKC3');
+</script>
 </head>
 <body>
 
@@ -103,12 +135,12 @@
   <h1>Beijing Hutong</h1>
   <p class="lede">NLP over novels to map hutong locations, word/token relationships, urban memory</p>
 
-  <div class="cover"><img loading="lazy" src="../covers/beijing-hutong.jpg" alt="Beijing Hutong"></div>
 
   <div class="meta">
     <div><div class="k">Role</div><div class="v">Team member</div></div>
     <div><div class="k">Affiliation / Context</div><div class="v">Course/research project, w/ Zeyi Sun</div></div>
     <div><div class="k">Year</div><div class="v">2023</div></div>
+    <div style="grid-column:1/-1"><div class="k">Tech Stack</div><div class="v">NLP · Token Relation Analysis · Text Mining</div></div>
   </div>
 
   <div class="tags">
@@ -118,8 +150,47 @@
   </div>
 
   <div class="links">
-    <a class="btn primary" href="https://www.ruyiyang.com/home/beijing-hutong" target="_blank" rel="noopener">View full case study ↗</a>
+    <!-- case-study link (hidden, keep in sync with source page): <a class="btn primary" href="https://www.ruyiyang.com/home/beijing-hutong" target="_blank" rel="noopener">View full case study ↗</a> -->
   </div>
+<div class="study">
+  <p class="st-label">Case Study</p>
+  <div class="srow cols-2">
+    <div class="scol">
+      <img loading="lazy" src="../media/beijing-hutong/img-01.jpg" alt="">
+    </div>
+    <div class="scol">
+      <p><b>Keywords:</b> Natural language processing · Urban Data · Urban Perception · Teammate: Zeyi Sun</p>
+    </div>
+  </div>
+  <div class="srow cols-1">
+    <div class="scol">
+      <img loading="lazy" src="../media/beijing-hutong/img-02.gif" alt="">
+      <p>The changes of hutong locations in novels over time</p>
+    </div>
+  </div>
+  <div class="srow cols-1">
+    <div class="scol">
+      <img loading="lazy" src="../media/beijing-hutong/img-03.png" alt="">
+      <p>Word/Token relationship (Book-Hutong-Object)</p>
+      <img loading="lazy" src="../media/beijing-hutong/img-04.png" alt="">
+    </div>
+  </div>
+  <div class="srow cols-2">
+    <div class="scol">
+      <img loading="lazy" src="../media/beijing-hutong/img-05.jpg" alt="">
+    </div>
+    <div class="scol">
+      <p>(Left) Fuma Hutong</p>
+      <p>(Right) 8 major Hutong</p>
+    </div>
+  </div>
+  <div class="srow cols-1">
+    <div class="scol">
+      <img loading="lazy" src="../media/beijing-hutong/img-06.jpg" alt="">
+      <p>The relationship between the Hutongs</p>
+    </div>
+  </div>
+</div>
 </div>
 
 <div class="foot">

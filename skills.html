@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills — Ruyi Yang</title>
+<meta name="description" content="Skills & stack — models, systems, sensors, and machines.">
+<style>
+  :root{
+    --bg:#fcfcfc;
+    --ink:#111;
+    --ink-2:#8a8a8e;
+    --line:rgba(0,0,0,.09);
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Inter,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  ::selection{background:#111;color:#fff}
+  body{
+    font-family:var(--font);background:var(--bg);color:var(--ink);
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+
+  .bar{
+    position:fixed;top:0;left:0;right:0;z-index:40;
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:22px clamp(24px,8vw,140px);
+    mix-blend-mode:multiply;background:linear-gradient(var(--bg) 60%,rgba(252,252,252,0));
+  }
+  .back{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;color:var(--ink-2);transition:color .3s;
+  }
+  .back:hover{color:var(--ink)}
+  .back svg{width:14px;height:14px;transition:transform .3s}
+  .back:hover svg{transform:translateX(-3px)}
+  .bar .name{font-size:15px;font-weight:700;letter-spacing:-.01em}
+
+  /* ---------- vertical columns ---------- */
+  .cols{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    padding:14vh clamp(24px,6vw,110px) 6vh;
+    min-height:92vh;
+  }
+  .col{
+    position:relative;display:flex;gap:20px;
+    padding:10px 20px 10px 24px;
+  }
+  .col .line{
+    position:absolute;left:0;top:0;bottom:0;width:1px;
+    background:var(--ink);opacity:.14;transform:scaleY(0);transform-origin:50% 0;
+  }
+
+  /* vertical title rail */
+  .vt{display:flex;flex-direction:column;align-items:center;gap:16px;flex-shrink:0}
+  .vt .num{
+    font-size:26px;font-weight:700;letter-spacing:-.04em;line-height:1;
+    color:transparent;-webkit-text-stroke:1px rgba(0,0,0,.22);
+  }
+  .vt h2{
+    writing-mode:vertical-rl;
+    font-size:clamp(15px,1.5vw,20px);font-weight:650;letter-spacing:.03em;
+    line-height:1.15;white-space:nowrap;
+  }
+
+  /* skill list */
+  .stack{flex:1;display:flex;flex-direction:column;min-width:0}
+  .list{display:flex;flex-direction:column;gap:6px}
+  .list li{
+    font-size:12.5px;color:#4a4a4f;line-height:1.5;
+    position:relative;width:fit-content;cursor:default;
+    padding-left:0;opacity:0;transform:translateY(14px);
+    transition:color .25s,padding-left .3s cubic-bezier(.65,0,.35,1);
+  }
+  .list li::before{
+    content:"";position:absolute;left:0;top:50%;height:1px;width:0;
+    background:var(--ink);transition:width .3s cubic-bezier(.65,0,.35,1);
+  }
+  .list li:hover{color:var(--ink);padding-left:20px}
+  .list li:hover::before{width:14px}
+
+
+  @media(max-width:1000px){
+    .cols{grid-template-columns:repeat(2,1fr);row-gap:6vh;min-height:0}
+  }
+  @media(max-width:560px){
+    .cols{grid-template-columns:1fr;padding-top:12vh}
+    .vt h2{writing-mode:horizontal-tb;white-space:normal}
+    .vt{flex-direction:row;align-items:baseline}
+  }
+
+  /* ---------- footer ---------- */
+  .foot{
+    padding:6vh clamp(24px,8vw,140px) 6vh;
+    border-top:1px solid var(--line);
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .foot .mail{
+    font-size:clamp(18px,2.6vw,30px);font-weight:650;letter-spacing:-.02em;
+    width:fit-content;position:relative;
+  }
+  .foot .mail::after{
+    content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;
+    background:var(--ink);transform:scaleX(0);transform-origin:100% 50%;
+    transition:transform .5s cubic-bezier(.65,0,.35,1);
+  }
+  .foot .mail:hover::after{transform:scaleX(1);transform-origin:0 50%}
+  .foot .row{display:flex;gap:24px;font-size:13px;color:var(--ink-2)}
+  .foot .row a:hover{color:var(--ink)}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NNLC8ZYKC3"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-NNLC8ZYKC3');
+</script>
+</head>
+<body>
+
+<div class="bar">
+  <a class="back" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    Back to all projects
+  </a>
+  <a class="name" href="index.html">Ruyi Yang</a>
+</div>
+
+<div class="cols">
+
+  <section class="col">
+    <span class="line"></span>
+    <div class="vt">
+      <span class="num">01</span>
+      <h2>AI / Machine Learning</h2>
+    </div>
+    <div class="stack">
+      <ul class="list">
+        <li>PyTorch</li>
+        <li>Diffusion Models</li>
+        <li>Multimodal LLMs</li>
+        <li>Deep Learning</li>
+        <li>Stable Diffusion · LoRA · ComfyUI</li>
+        <li>OpenCV</li>
+        <li>YOLO</li>
+        <li>TensorFlow</li>
+        <li>Scikit-learn</li>
+        <li>LangChain</li>
+        <li>OpenAI API</li>
+        <li>AutoGen</li>
+        <li>Hugging Face</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="col">
+    <span class="line"></span>
+    <div class="vt">
+      <span class="num">02</span>
+      <h2>Software / Data / Cloud</h2>
+    </div>
+    <div class="stack">
+      <ul class="list">
+        <li>Python</li>
+        <li>SQL</li>
+        <li>FastAPI</li>
+        <li>C++</li>
+        <li>C#</li>
+        <li>React Native</li>
+        <li>Docker</li>
+        <li>Git · CI/CD</li>
+        <li>Google Cloud · Vertex AI</li>
+        <li>Azure AI</li>
+        <li>Pandas · NumPy</li>
+        <li>Matplotlib</li>
+        <li>Tableau</li>
+        <li>SPSS</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="col">
+    <span class="line"></span>
+    <div class="vt">
+      <span class="num">03</span>
+      <h2>Hardware / Fabrication</h2>
+    </div>
+    <div class="stack">
+      <ul class="list">
+        <li>ESP32</li>
+        <li>Embedded C</li>
+        <li>Robot Arm</li>
+        <li>Arduino</li>
+        <li>Ultrasonic · Mic Sensors</li>
+        <li>ZED Camera</li>
+        <li>Quest 3</li>
+        <li>MR-assisted Fabrication</li>
+        <li>3D Printing</li>
+        <li>Laser Cutting</li>
+        <li>Pipe Bending · Welding</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="col">
+    <span class="line"></span>
+    <div class="vt">
+      <span class="num">04</span>
+      <h2>Design / 3D / Media</h2>
+    </div>
+    <div class="stack">
+      <ul class="list">
+        <li>Rhino</li>
+        <li>Grasshopper</li>
+        <li>Unity</li>
+        <li>Blender</li>
+        <li>Figma</li>
+        <li>Canva</li>
+        <li>Gravity Sketch</li>
+        <li>GIS</li>
+        <li>CAD</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<div class="foot">
+  <a class="mail" href="mailto:emmaruyi@mit.edu">emmaruyi@mit.edu</a>
+  <div class="row">
+    <a href="https://github.com/emmaruyiyang" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/emma-ruyi-yang/" target="_blank">LinkedIn</a>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+/* entrance — per column: line grows, vertical title unmasks, items cascade */
+document.querySelectorAll(".col").forEach((col,i)=>{
+  const d = .15 + i*.14;
+  gsap.timeline({delay:d})
+    .to(col.querySelector(".line"),{scaleY:1,duration:.9,ease:"power3.inOut"},0)
+    .from(col.querySelector(".vt"),{opacity:0,y:26,duration:.8,ease:"power3.out"},.15)
+    .to(col.querySelectorAll(".list li"),
+        {opacity:1,y:0,duration:.7,ease:"power3.out",stagger:.05},.3);
+});
+
+/* analytics: contact clicks */
+document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
+  a.addEventListener("click", ()=>{
+    if(typeof gtag === "function") gtag("event", "contact_click", {method:"email"});
+  });
+});
+</script>
+</body>
+</html>
