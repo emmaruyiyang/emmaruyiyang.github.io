@@ -107,7 +107,8 @@
   .study .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:0 0 14px}
   .study .sgrid img{aspect-ratio:4/3;object-fit:cover;margin:0}
   .study .vid{position:relative;aspect-ratio:16/9;margin:0 0 14px;border-radius:6px;overflow:hidden;background:#000}
-  .study .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .study .vid iframe,.study .vid video{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .study .vid video{object-fit:cover}
   .study .doc{display:inline-block;font-size:13px;border:1px solid var(--line);border-radius:100px;padding:9px 18px;margin:8px 0 20px}
   .study .doc:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
   /* long-form content reads left-aligned; hero stays centered */
@@ -162,6 +163,12 @@ gtag('config', 'G-NNLC8ZYKC3');
   </div>
 <div class="study">
   <p class="st-label">Case Study</p>
+  <div class="srow cols-1">
+    <div class="scol">
+      <div class="vid"><video src="../media/sensebox/interaction-demo.mp4" autoplay muted loop playsinline controls preload="metadata"></video></div>
+      <p>Interaction demo — how the space reads body position, posture and expression, and responds.</p>
+    </div>
+  </div>
   <div class="srow cols-2">
     <div class="scol">
       <img loading="lazy" src="../media/sensebox/img-01.jpg" alt="">
@@ -172,18 +179,7 @@ gtag('config', 'G-NNLC8ZYKC3');
   </div>
   <div class="srow cols-1">
     <div class="scol">
-      <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/BeUdE19fljY" title="video" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-    </div>
-  </div>
-  <div class="srow cols-1">
-    <div class="scol">
-      <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/mGQQPErmGX4" title="video" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-      <p>Nebula (2025, Participate as Teaching Assistant)</p>
-    </div>
-  </div>
-  <div class="srow cols-1">
-    <div class="scol">
-      <img loading="lazy" src="../media/sensebox/img-02.png" alt="">
+      <img loading="lazy" src="../media/sensebox/img-02.jpg" alt="">
     </div>
   </div>
   <div class="srow cols-2">
@@ -194,8 +190,8 @@ gtag('config', 'G-NNLC8ZYKC3');
       <p>Construction and Assembly: The assembly process involved bundling parts together, installing depth cameras, and attaching acrylic seat and table surfaces, completing the Sense Box construction.</p>
     </div>
     <div class="scol">
-      <img loading="lazy" src="../media/sensebox/img-03.png" alt="">
-      <img loading="lazy" src="../media/sensebox/img-04.png" alt="">
+      <img loading="lazy" src="../media/sensebox/img-03.jpg" alt="">
+      <img loading="lazy" src="../media/sensebox/img-04.jpg" alt="">
     </div>
   </div>
   <div class="srow cols-2">
@@ -205,13 +201,27 @@ gtag('config', 'G-NNLC8ZYKC3');
       <p>Acquired human data using ZED camera and headset data, with body landmark detection and emotion recognition conducted.</p>
       <p>Analyzed human data using qualitative and quantitative methods, and formulated rules based on distances, orientations, postures, head states, and expressions to derive interaction, task, attention, and emotional patterns.</p>
       <p>Implemented real-time spatial changes based on human data, affecting spatial enclosure, height, openness, regularity, and color, using Grasshopper, Unity, and Python. Integrated with physical spaces to create dynamic virtual environments that adapt to human work states.</p>
-      <img loading="lazy" src="../media/sensebox/img-05.png" alt="">
+      <img loading="lazy" src="../media/sensebox/img-05.jpg" alt="">
     </div>
     <div class="scol">
-      <img loading="lazy" src="../media/sensebox/img-06.png" alt="">
+      <img loading="lazy" src="../media/sensebox/img-06.jpg" alt="">
       <img loading="lazy" src="../media/sensebox/img-07.jpg" alt="">
-      <img loading="lazy" src="../media/sensebox/img-08.png" alt="">
-      <img loading="lazy" src="../media/sensebox/img-09.png" alt="">
+      <img loading="lazy" src="../media/sensebox/img-08.jpg" alt="">
+      <img loading="lazy" src="../media/sensebox/img-09.jpg" alt="">
+    </div>
+  </div>
+  <div class="srow cols-1">
+    <div class="scol">
+      <h2>Full walkthrough</h2>
+      <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/BeUdE19fljY" title="SenseBox full walkthrough" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+      <p>Construction and interaction from start to finish.</p>
+    </div>
+  </div>
+  <div class="srow cols-1">
+    <div class="scol">
+      <h2>Related — Nebula</h2>
+      <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/mGQQPErmGX4" title="Nebula" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+      <p>Follow-up pavilion built in 2025, where I took part as teaching assistant.</p>
     </div>
   </div>
 </div>

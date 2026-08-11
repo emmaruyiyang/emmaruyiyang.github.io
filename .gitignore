@@ -3,3 +3,8 @@
 
 # Google OAuth credential downloads — contain client_secret, never commit
 client_secret_*.json
+
+# Raw footage kept locally for re-encoding; the site serves the compressed
+# copies under media/
+data/*.mov
+data/*.mp4
