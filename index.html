@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ruyi Yang</title>
 <meta name="description" content="Ruyi Yang — AI systems × creative technology.">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preload" as="image" href="covers/fitme.jpg">
 <style>
   :root{
     --bg:#fcfcfc;
@@ -280,7 +282,7 @@ gtag('config', 'G-NNLC8ZYKC3');
 <div class="gallery" id="gallery">
 
   <a class="item" data-cat="agent" data-year="2025" href="project/fitme.html">
-    <span class="ph has-video"><img loading="lazy" src="covers/fitme.jpg" alt="FitMe"><video src="covers/fitme.mp4" autoplay muted loop playsinline></video></span>
+    <span class="ph has-video"><img loading="lazy" src="covers/fitme.jpg" alt="FitMe"><video preload="none" data-src="covers/fitme.mp4" muted loop playsinline></video></span>
     <span class="cap">FitMe<small>AI Fashion Agent</small></span>
   </a>
 
@@ -290,7 +292,7 @@ gtag('config', 'G-NNLC8ZYKC3');
   </a>
 
   <a class="item" data-cat="agent creation" data-year="2025" href="project/scrollmind.html">
-    <span class="ph has-video"><img loading="lazy" src="covers/scrollmind.jpg" alt="ScrollMind"><video src="covers/scrollmind.mp4" autoplay muted loop playsinline></video></span>
+    <span class="ph has-video"><img loading="lazy" src="covers/scrollmind.jpg" alt="ScrollMind"><video preload="none" data-src="covers/scrollmind.mp4" muted loop playsinline></video></span>
     <span class="cap">ScrollMind<small>Intent-controlled Feed</small></span>
   </a>
 
@@ -305,7 +307,7 @@ gtag('config', 'G-NNLC8ZYKC3');
   </a>
 
   <a class="item" data-cat="agent" data-year="2024" href="project/archinspire.html">
-    <span class="ph has-video"><img loading="lazy" src="covers/archinspire.jpg" alt="ArchInspire"><video src="covers/archinspire.mp4" autoplay muted loop playsinline></video></span>
+    <span class="ph has-video"><img loading="lazy" src="covers/archinspire.jpg" alt="ArchInspire"><video preload="none" data-src="covers/archinspire.mp4" muted loop playsinline></video></span>
     <span class="cap">ArchInspire<small>Design-by-Analogy Copilot</small></span>
   </a>
 
@@ -364,7 +366,7 @@ gtag('config', 'G-NNLC8ZYKC3');
 
   <!-- CodeDuck link disabled for now; restore with href="https://github.com/emmaruyiyang" target="_blank" -->
   <a class="item small" data-cat="creation" data-year="2026">
-    <span class="ph has-video"><img loading="lazy" src="covers/codeduck.jpg" alt="CodeDuck"><video src="covers/codeduck.mp4" autoplay muted loop playsinline></video></span>
+    <span class="ph has-video"><img loading="lazy" src="covers/codeduck.jpg" alt="CodeDuck"><video preload="none" data-src="covers/codeduck.mp4" muted loop playsinline></video></span>
     <span class="cap">CodeDuck<small>Desktop Rubber-duck Companion</small></span>
   </a>
 
@@ -423,10 +425,11 @@ gtag('config', 'G-NNLC8ZYKC3');
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
 <script>
+document.addEventListener("DOMContentLoaded", ()=>{
 gsap.registerPlugin(ScrollTrigger, Flip);
 
 /* intro reveal */
@@ -719,18 +722,19 @@ window.addEventListener("pointerup", ()=>{
 });
 
 /* ---- video covers: autoplay while on screen, pause when scrolled away ---- */
+/* videos carry data-src and only fetch once scrolled near — they are decorative
+   covers, so paying 0.7MB up front to autoplay off-screen is wasted bandwidth */
 const vidObserver = new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     const v = e.target.querySelector("video");
     if(!v) return;
-    if(e.isIntersecting){ v.play().catch(()=>{}); }
-    else { v.pause(); }
+    if(e.isIntersecting){
+      if(!v.src && v.dataset.src){ v.src = v.dataset.src; }
+      v.play().catch(()=>{});
+    } else { v.pause(); }
   });
-},{threshold:0.25});
-document.querySelectorAll(".ph.has-video").forEach(ph=>{
-  ph.querySelector("video").setAttribute("preload","auto");
-  vidObserver.observe(ph);
-});
+},{threshold:0.25, rootMargin:"200px"});
+document.querySelectorAll(".ph.has-video").forEach(ph=>vidObserver.observe(ph));
 
 /* counts */
 fs.forEach(btn=>{
@@ -752,6 +756,7 @@ document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
   a.addEventListener("click", ()=>{
     if(typeof gtag === "function") gtag("event", "contact_click", {method:"email"});
   });
+});
 });
 </script>
 </body>
