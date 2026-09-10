@@ -100,6 +100,8 @@
   .srow.cols-4{grid-template-columns:repeat(4,1fr)}
   @media(max-width:700px){.srow.cols-2,.srow.cols-3,.srow.cols-4{grid-template-columns:1fr}}
   .study h2{font-size:clamp(19px,2.2vw,26px);font-weight:650;letter-spacing:-.02em;margin:10px 0 12px}
+  /* clear the sticky bar when linked to directly */
+  .study h2[id]{scroll-margin-top:90px}
   .study p{font-size:15px;line-height:1.7;color:#3a3a3f;margin:0 auto 12px;max-width:72ch}
   .study p a{border-bottom:1px solid var(--line)}
   .study p a:hover{border-color:var(--ink)}
@@ -141,7 +143,7 @@ gtag('config', 'G-NNLC8ZYKC3');
 
 
   <div class="meta">
-    <div><div class="k">Role</div><div class="v">Team Lead (interaction)</div></div>
+    <div><div class="k">Role</div><div class="v">Team Lead, Teaching Assistant</div></div>
     <div><div class="k">Affiliation / Context</div><div class="v">Tongji University, instructor Prof. Chao Yan</div></div>
     <div><div class="k">Year</div><div class="v">2024</div></div>
     <div><div class="k">Scale</div><div class="v">Big</div></div>
@@ -188,7 +190,7 @@ gtag('config', 'G-NNLC8ZYKC3');
   </div>
   <div class="srow cols-2">
     <div class="scol">
-      <h2>Construction</h2>
+      <h2 id="construction">Construction</h2>
       <p>Framework Design: The workspace box (3m x 3m x 2.5m) features a spiral tri-ring design with a core steel pipe framework. Secondary lines are added and secured with bundling straps, then rotated 180 degrees to create a symmetrical structure, forming the final plan and renderings.</p>
       <p>Bundling and Node Development: Various bundling methods were explored, resulting in specific bundled nodes for the final design. Each pipe was bent, numbered, and bundled in sequence to form six main components.</p>
       <p>Construction and Assembly: The assembly process involved bundling parts together, installing depth cameras, and attaching acrylic seat and table surfaces, completing the Sense Box construction.</p>
@@ -200,7 +202,7 @@ gtag('config', 'G-NNLC8ZYKC3');
   </div>
   <div class="srow cols-2">
     <div class="scol">
-      <h2>Interaction</h2>
+      <h2 id="interaction">Interaction</h2>
       <p>Utilized mixed reality technology to assist in bending steel pipes for constructing a 3x3x3m installation space prototype.</p>
       <p>Acquired human data using ZED camera and headset data, with body landmark detection and emotion recognition conducted.</p>
       <p>Analyzed human data using qualitative and quantitative methods, and formulated rules based on distances, orientations, postures, head states, and expressions to derive interaction, task, attention, and emotional patterns.</p>
@@ -216,14 +218,14 @@ gtag('config', 'G-NNLC8ZYKC3');
   </div>
   <div class="srow cols-1">
     <div class="scol">
-      <h2>Full walkthrough</h2>
+      <h2 id="walkthrough">Full walkthrough</h2>
       <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/BeUdE19fljY" title="SenseBox full walkthrough" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
       <p>Construction and interaction from start to finish.</p>
     </div>
   </div>
   <div class="srow cols-1">
     <div class="scol">
-      <h2>Related — Nebula</h2>
+      <h2 id="nebula">Related — Nebula</h2>
       <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/mGQQPErmGX4" title="Nebula" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
       <p>Follow-up pavilion built in 2025, where I took part as teaching assistant.</p>
     </div>
