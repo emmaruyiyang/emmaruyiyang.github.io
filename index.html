@@ -760,6 +760,11 @@ items.forEach(it=>{
       gtag("event", "select_content", {content_type:"project", item_id:name});
   });
 });
+fs.forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    if(typeof gtag === "function") gtag("event", "filter_click", {filter:btn.dataset.f});
+  });
+});
 document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
   a.addEventListener("click", ()=>{
     if(typeof gtag === "function") gtag("event", "contact_click", {method:"email"});
