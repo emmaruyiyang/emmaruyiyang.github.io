@@ -588,6 +588,7 @@ fs.forEach(btn=>{
     btn.classList.add("on");
     const f = btn.dataset.f;
     curFilter = f;
+    try{ sessionStorage.setItem("filter", f); }catch(e){}
     if(beta){
       items.forEach(it=>{
         const show = f==="all" || it.dataset.cat.split(" ").includes(f);
@@ -762,9 +763,16 @@ items.forEach(it=>{
 });
 fs.forEach(btn=>{
   btn.addEventListener("click", ()=>{
-    if(typeof gtag === "function") gtag("event", "filter_click", {filter:btn.dataset.f});
+    if(typeof gtag === "function" && !restoring) gtag("event", "filter_click", {filter:btn.dataset.f});
   });
 });
+/* coming back from a project page — reopen the tab the visitor had selected */
+let restoring = false;
+try{
+  const saved = sessionStorage.getItem("filter");
+  const btn = saved && saved!=="all" && document.querySelector(`.f[data-f="${saved}"]`);
+  if(btn){ restoring = true; btn.click(); restoring = false; }
+}catch(e){}
 document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
   a.addEventListener("click", ()=>{
     if(typeof gtag === "function") gtag("event", "contact_click", {method:"email"});
