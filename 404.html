@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found — Ruyi Yang</title>
+<meta name="robots" content="noindex">
+<style>
+  :root{
+    --bg:#fcfcfc;
+    --ink:#111;
+    --ink-2:#8a8a8e;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Inter,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:var(--font);background:var(--bg);color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;display:flex;align-items:center;
+    padding:0 clamp(24px,8vw,140px);
+  }
+  a{color:inherit}
+  h1{font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.02em;margin-bottom:14px}
+  p{font-size:15px;color:var(--ink-2);line-height:1.6}
+  p a{color:var(--ink)}
+</style>
+<script>
+/* old Google Sites URLs (ruyiyang.com/home/<slug>) → new project pages */
+(function(){
+  var PROJECTS = ["archinspire","beijing-hutong","chair","dance-music","fitme","gesture-music",
+    "hengfu","interactive-pavilion-fir-structure","lookalike","membrane","meme","pet-vision",
+    "robotic","scrollmind","senseable-city-lab","sensebox","skinme","socity-dao",
+    "streetview-color","treeplanter"];
+  var path = location.pathname.replace(/\/+$/,"").toLowerCase();
+  var m = path.match(/^\/home(?:\/([^\/]+))?$/);
+  if(!m) return;
+  var slug = m[1];
+  window.REDIRECT_TO = !slug ? "/" : (PROJECTS.indexOf(slug) >= 0 ? "/project/" + slug + ".html" : "/");
+  document.documentElement.style.visibility = "hidden";   /* no 404 flash while redirecting */
+})();
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NNLC8ZYKC3"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+if(window.REDIRECT_TO){
+  /* record the hit here so the session keeps the original referrer (Google, LinkedIn, …),
+     then move on — fall back after 1s in case gtag is blocked */
+  var go = function(){ if(!go.done){ go.done = true; location.replace(window.REDIRECT_TO); } };
+  gtag('config', 'G-NNLC8ZYKC3', {page_title:'Old URL redirect', event_callback:go});
+  setTimeout(go, 1000);
+}else{
+  gtag('config', 'G-NNLC8ZYKC3', {page_title:'404'});
+}
+</script>
+</head>
+<body>
+<main>
+  <h1>Page not found</h1>
+  <p>This page may have moved. <a href="/">Back to the homepage →</a></p>
+</main>
+</body>
+</html>
