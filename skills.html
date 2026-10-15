@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Skills — Ruyi Yang</title>
-<meta name="description" content="Skills & stack — models, systems, sensors, and machines.">
+<meta name="description" content="Skills & stack — agents, post-training, multimodal models, systems, sensors, and machines.">
 <style>
   :root{
     --bg:#fcfcfc;
@@ -67,6 +67,7 @@
   /* skill list */
   .stack{flex:1;display:flex;flex-direction:column;min-width:0}
   .list{display:flex;flex-direction:column;gap:6px}
+  .list + .list{margin-top:22px}   /* gap between sub-groups in one column */
   .list li{
     font-size:12.5px;color:#4a4a4f;line-height:1.5;
     position:relative;width:fit-content;cursor:default;
@@ -85,7 +86,8 @@
     .cols{grid-template-columns:repeat(2,1fr);row-gap:6vh;min-height:0}
   }
   @media(max-width:560px){
-    .cols{grid-template-columns:1fr;padding-top:12vh}
+    .cols{grid-template-columns:1fr;padding-top:12vh;row-gap:5vh}
+    .col{flex-direction:column;gap:14px}
     .vt h2{writing-mode:horizontal-tb;white-space:normal}
     .vt{flex-direction:row;align-items:baseline}
   }
@@ -134,23 +136,20 @@ gtag('config', 'G-NNLC8ZYKC3');
     <span class="line"></span>
     <div class="vt">
       <span class="num">01</span>
-      <h2>AI / Machine Learning</h2>
+      <h2>Agents / LLMs</h2>
     </div>
     <div class="stack">
       <ul class="list">
-        <li>PyTorch</li>
-        <li>Diffusion Models</li>
-        <li>Multimodal LLMs</li>
-        <li>Deep Learning</li>
-        <li>Stable Diffusion · LoRA · ComfyUI</li>
-        <li>OpenCV</li>
-        <li>YOLO</li>
-        <li>TensorFlow</li>
-        <li>Scikit-learn</li>
-        <li>LangChain</li>
-        <li>OpenAI API</li>
-        <li>AutoGen</li>
-        <li>Hugging Face</li>
+        <li>LangChain · AutoGen</li>
+        <li>RAG · Tool Use</li>
+        <li>Multi-Agent Systems</li>
+        <li>Routing &amp; Orchestration</li>
+        <li>Agent Harnesses</li>
+        <li>Evals</li>
+        <li>SFT · DPO · GRPO</li>
+        <li>RLHF · RLAIF</li>
+        <li>LoRA · PEFT</li>
+        <li>Synthetic Data</li>
       </ul>
     </div>
   </section>
@@ -159,24 +158,19 @@ gtag('config', 'G-NNLC8ZYKC3');
     <span class="line"></span>
     <div class="vt">
       <span class="num">02</span>
-      <h2>Software / Data / Cloud</h2>
+      <h2>ML / Multimodal</h2>
     </div>
     <div class="stack">
       <ul class="list">
-        <li>Python</li>
-        <li>SQL</li>
-        <li>FastAPI</li>
-        <li>C++</li>
-        <li>C#</li>
-        <li>React Native</li>
-        <li>Docker</li>
-        <li>Git · CI/CD</li>
-        <li>Google Cloud · Vertex AI</li>
-        <li>Azure AI</li>
-        <li>Pandas · NumPy</li>
-        <li>Matplotlib</li>
-        <li>Tableau</li>
-        <li>SPSS</li>
+        <li>PyTorch</li>
+        <li>Hugging Face Transformers</li>
+        <li>TensorFlow · Scikit-learn</li>
+        <li>Diffusion Models · ComfyUI</li>
+        <li>VLMs · CLIP · SigLIP</li>
+        <li>Multimodal Alignment &amp; Fusion</li>
+        <li>Video Understanding</li>
+        <li>Visual Grounding</li>
+        <li>OpenCV · YOLO</li>
       </ul>
     </div>
   </section>
@@ -185,7 +179,29 @@ gtag('config', 'G-NNLC8ZYKC3');
     <span class="line"></span>
     <div class="vt">
       <span class="num">03</span>
-      <h2>Hardware / Fabrication</h2>
+      <h2>Software / Data / Cloud</h2>
+    </div>
+    <div class="stack">
+      <ul class="list">
+        <li>Python · C++ · C#</li>
+        <li>SQL · PostgreSQL</li>
+        <li>React · FastAPI</li>
+        <li>Docker · Kubernetes</li>
+        <li>Git · CI/CD</li>
+        <li>Google Cloud · Azure AI</li>
+        <li>W&amp;B</li>
+        <li>Data Pipelines · ETL</li>
+        <li>A/B Testing</li>
+        <li>Pandas · Tableau</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="col">
+    <span class="line"></span>
+    <div class="vt">
+      <span class="num">04</span>
+      <h2>Hardware / Design</h2>
     </div>
     <div class="stack">
       <ul class="list">
@@ -200,19 +216,8 @@ gtag('config', 'G-NNLC8ZYKC3');
         <li>3D Printing</li>
         <li>Laser Cutting</li>
       </ul>
-    </div>
-  </section>
-
-  <section class="col">
-    <span class="line"></span>
-    <div class="vt">
-      <span class="num">04</span>
-      <h2>Design / 3D / Media</h2>
-    </div>
-    <div class="stack">
       <ul class="list">
-        <li>Rhino</li>
-        <li>Grasshopper</li>
+        <li>Rhino · Grasshopper</li>
         <li>Unity</li>
         <li>Blender</li>
         <li>Figma</li>
