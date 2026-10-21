@@ -300,6 +300,7 @@ gtag('config', 'G-NNLC8ZYKC3');
   <button class="f on" data-f="all">All</button>
   <button class="f" data-f="urban">Urban</button>
   <button class="f" data-f="agent">Agents</button>
+  <button class="f" data-f="apps">Apps</button>
   <button class="f" data-f="creation">AI Creation</button>
   <button class="f" data-f="interaction">Interaction</button>
   <button class="f" data-f="xr">VR/MR</button>
@@ -354,7 +355,7 @@ gtag('config', 'G-NNLC8ZYKC3');
     <span class="cap">Robotic Restoration<small>AI + Robot Arm</small></span>
   </a>
 
-  <a class="item" data-cat="agent" data-year="2025" href="project/skinme.html">
+  <a class="item" data-cat="agent apps" data-year="2025" href="project/skinme.html">
     <span class="ph"><img loading="lazy" src="covers/skinme.jpg" alt="SkinMe"></span>
     <span class="cap">SkinMe<small>Skincare Agent · AC215</small></span>
   </a>
@@ -372,6 +373,11 @@ gtag('config', 'G-NNLC8ZYKC3');
   <a class="item" data-cat="urban" data-ord-urban="3" data-year="2023" href="project/hengfu.html">
     <span class="ph"><img loading="lazy" src="covers/hengfu.jpg" alt="Hengfu Vitality"></span>
     <span class="cap">Hengfu Vitality<small>pix2pix Facade Generator</small></span>
+  </a>
+
+  <a class="item" data-cat="agent apps" data-year="2026" href="project/idea-post.html">
+    <span class="ph"><img loading="lazy" src="covers/idea-post.jpg" alt="Idea Post"></span>
+    <span class="cap">Idea Post<small>Idea Manager · Claude Agent</small></span>
   </a>
 
   <a class="item" id="archCard" data-cat="fabrication" data-year="2023" href="#arch">
@@ -393,9 +399,14 @@ gtag('config', 'G-NNLC8ZYKC3');
   </a>
 
   <!-- CodeDuck link disabled for now; restore with href="https://github.com/emmaruyiyang" target="_blank" -->
-  <a class="item small" data-cat="creation" data-year="2026">
+  <a class="item small" data-cat="creation apps" data-year="2026">
     <span class="ph has-video"><img loading="lazy" src="covers/codeduck.jpg" alt="CodeDuck"><video preload="none" data-src="covers/codeduck.mp4" muted loop playsinline></video></span>
     <span class="cap">CodeDuck<small>Desktop Rubber-duck Companion</small></span>
+  </a>
+
+  <a class="item small" data-cat="interaction apps" data-year="2026" href="https://www.ruyiyang.com/KeyJam/" target="_blank" rel="noopener">
+    <span class="ph"><img loading="lazy" src="covers/keyjam.jpg" alt="KeyJam"></span>
+    <span class="cap">KeyJam<small>Typing → Music · Mac App</small></span>
   </a>
 
   <a class="item small" data-cat="interaction urban xr" data-year="2026" href="project/pet-vision.html">
@@ -590,6 +601,9 @@ fs.forEach(btn=>{
     const f = btn.dataset.f;
     curFilter = f;
     try{ sessionStorage.setItem("filter", f); }catch(e){}
+    /* give every tab its own link: emmaruyiyang.com/#agent */
+    const url = location.pathname + location.search + (f==="all" ? "" : "#"+f);
+    if(url !== location.pathname + location.search + location.hash) history.replaceState(null, "", url);
     if(beta){
       items.forEach(it=>{
         const show = f==="all" || it.dataset.cat.split(" ").includes(f);
@@ -770,10 +784,17 @@ fs.forEach(btn=>{
 /* coming back from a project page — reopen the tab the visitor had selected */
 let restoring = false;
 try{
-  const saved = sessionStorage.getItem("filter");
+  /* a #tag in the URL wins over the tab remembered for this session */
+  const fromHash = location.hash.slice(1);
+  const saved = document.querySelector(`.f[data-f="${CSS.escape(fromHash)}"]`) ? fromHash : sessionStorage.getItem("filter");
   const btn = saved && saved!=="all" && document.querySelector(`.f[data-f="${saved}"]`);
   if(btn){ restoring = true; btn.click(); restoring = false; }
 }catch(e){}
+/* editing the hash by hand (or following an in-page #tag link) switches tabs */
+window.addEventListener("hashchange", ()=>{
+  const btn = document.querySelector(`.f[data-f="${CSS.escape(location.hash.slice(1) || "all")}"]`);
+  if(btn && !btn.classList.contains("on")) btn.click();
+});
 document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
   a.addEventListener("click", ()=>{
     if(typeof gtag === "function") gtag("event", "contact_click", {method:"email"});
