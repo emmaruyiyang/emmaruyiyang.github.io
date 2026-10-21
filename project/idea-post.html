@@ -111,6 +111,7 @@
   .study .doc{display:inline-block;font-size:13px;border:1px solid var(--line);border-radius:100px;padding:9px 18px;margin:8px 0 20px}
   .study .doc:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
   /* long-form content reads left-aligned; hero stays centered */
+  .study .clip{width:100%;height:auto;border-radius:6px;display:block;margin:0 0 14px;background:#fff}
   .links .note{display:inline-block;font-size:12px;color:var(--ink-2);border:1px dashed var(--line);border-radius:100px;padding:6px 14px}
   .meta{text-align:left}
   .study{text-align:left}
@@ -164,79 +165,42 @@ gtag('config', 'G-NNLC8ZYKC3');
 <div class="study">
   <p class="st-label">Case Study</p>
 
-  <div class="srow cols-2">
-    <div class="scol">
-      <img loading="lazy" src="../media/idea-post/stamp.jpg" alt="Idea Post stamp illustration">
-    </div>
+  <div class="srow cols-1">
     <div class="scol">
       <h2>Why</h2>
-      <p>My ideas lived everywhere: notes apps, chat logs, voice memos, the back of slides. Most never got a next step, and the few that did competed for the same evenings.</p>
-      <p>Idea Post collects them in one place and keeps the number of active projects honest. It runs entirely on my laptop; the only thing that leaves the machine is the text sent to Claude for organizing.</p>
+      <p>My ideas were scattered across notes, chats and voice memos, and few ever got a next step. Idea Post gathers them in one place and runs on my laptop.</p>
+      <p>Ideas live as stamps in four folders: Inbox, Incubating, Queued and Active. Moving one into Active first checks a work-in-progress limit, so only a few projects run at once.</p>
     </div>
   </div>
 
   <div class="srow cols-1">
     <div class="scol">
-      <h2>Desk &amp; folders</h2>
-      <p>The desk holds four folders: Inbox, Incubating, Queued and Active, with shelved and finished ideas tucked under Archive. Ideas only move forward through explicit status changes, and moving one into Active checks a work-in-progress limit first: over the limit, you pause something, start anyway, or cancel.</p>
-      <img loading="lazy" src="../media/idea-post/01-desk.jpg" alt="Desk view with four folders">
-    </div>
-  </div>
-
-  <div class="srow cols-2">
-    <div class="scol">
-      <img loading="lazy" src="../media/idea-post/02-folder.jpg" alt="Folder opened, stamps scattered">
-    </div>
-    <div class="scol">
-      <img loading="lazy" src="../media/idea-post/09-folder-dark.jpg" alt="Folder in dark mode">
-    </div>
-  </div>
-  <div class="srow cols-1">
-    <div class="scol">
-      <p>Inside a folder, stamps can be scattered and dragged anywhere, or snapped to a grid. Research ideas are landscape stamps, side projects are portrait. Each folder has its own material, in light and dark.</p>
+      <img loading="lazy" src="../media/idea-post/09-folder-dark.jpg" alt="A folder of idea stamps, dark mode">
     </div>
   </div>
 
   <div class="srow cols-1">
     <div class="scol">
-      <h2>Capture: type, speak, sort</h2>
-      <img loading="lazy" src="../media/idea-post/07-quick-note.png" alt="Quick note bar" style="max-width:660px;margin:0 auto 14px">
-      <p>⌘K opens a single input bar. Type a sentence or tap the mic; speech is transcribed locally with whisper.cpp and the audio is deleted right after. Press return and Claude sorts the note into draft cards: one paragraph can become several ideas, and if it overlaps an existing idea Claude proposes appending or merging. Nothing is saved until you confirm, and if the call fails the raw text goes straight to the Inbox marked “to sort”.</p>
-      <p>Model output is never trusted as-is: drafts are length-checked, references to ideas that don’t exist become new ideas, and appending only fills empty fields or adds to lists, so it never overwrites what I wrote.</p>
-    </div>
-  </div>
-
-  <div class="srow cols-1">
-    <div class="scol">
-      <h2>The idea card</h2>
-      <img loading="lazy" src="../media/idea-post/03-detail.jpg" alt="Idea detail view">
-      <p>Each card has a description, a single next step with a time estimate, milestones with hours, and attachments. The stamp’s face value is the total estimated hours. Fields written by Claude carry a small AI marker that disappears once you edit them, and every move is logged on a timeline.</p>
-      <p>Stamps are made by hand in a four-step ritual: pick an image, frame it on a sheet of stamp paper, hold the lever (or space) to punch the perforations, then tear the stamp off.</p>
-    </div>
-  </div>
-
-  <div class="srow cols-1">
-    <div class="scol">
-      <h2>Ask Claude</h2>
+      <h2>Capture with Claude</h2>
+      <p>⌘K to type or speak a note (transcribed locally with whisper.cpp), and Claude sorts it into draft cards. ⌘J opens a chat for thinking an idea through; when it’s ready, Claude proposes a card and “File it” sends it to its folder. Nothing is saved without your confirmation.</p>
       <img loading="lazy" src="../media/idea-post/06-ask-claude.jpg" alt="Ask Claude panel proposing an idea card">
-      <p>⌘J opens a chat that can dock on the right or float. Talk an idea through, drop in PDFs or images (uploaded once through the Files API and referenced by id afterwards), and when it’s clear Claude proposes a card through a tool call. “File it” saves it and the stamp flies into its folder, carrying the conversation and any documents with it. If you ask for a PRD, Claude attaches it to the card.</p>
     </div>
   </div>
 
   <div class="srow cols-1">
     <div class="scol">
-      <h2>Plan</h2>
-      <img loading="lazy" src="../media/idea-post/04-plan.jpg" alt="Plan view, month calendar of projected milestones">
-      <p>The Plan tab projects every milestone onto a month calendar from a weekly time budget (8 hours a week here), research first. It answers the question I actually have: if I keep this pace, when does each project land?</p>
+      <h2>Making a stamp</h2>
+      <p>Each idea gets its own stamp: choose an image, print it, punch the perforations, and tear it off.</p>
+      <video class="clip" src="../media/idea-post/stamp-maker.mp4" poster="../media/idea-post/stamp-maker.jpg" autoplay muted loop playsinline preload="metadata"></video>
     </div>
   </div>
 
   <div class="srow cols-1">
     <div class="scol">
-      <h2>Canvas</h2>
-      <img loading="lazy" src="../media/idea-post/05-canvas.jpg" alt="Canvas with all idea stamps">
-      <p>The Canvas is a free board for all ideas at once, with pen, shapes, arrows, sticky notes and text. “Copy for Figma” puts the whole board on the clipboard as SVG, so it pastes into Figma or FigJam as editable vectors.</p>
-      <img loading="lazy" src="../media/idea-post/08-canvas-dark.jpg" alt="Canvas in dark mode">
+      <h2>Plan &amp; Canvas</h2>
+      <p>Plan projects every milestone onto a calendar from a weekly time budget. Canvas is a free board for all ideas that copies into Figma as editable vectors.</p>
+      <img loading="lazy" src="../media/idea-post/04-plan.jpg" alt="Plan view, month calendar of milestones">
+      <img loading="lazy" src="../media/idea-post/05-canvas.jpg" alt="Canvas view with all idea stamps">
     </div>
   </div>
 </div>
